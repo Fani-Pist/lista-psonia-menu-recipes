@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Λίστα Σούπερ Μάρκετ • Ο Μπακάλης & Συνταγές</title>
+  <title>Lista -psonia -menu- recipes</title>
   <meta name="theme-color" content="#7c4a2d" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Ο Μπακάλης" />
+  <meta name="apple-mobile-web-app-title" content="Lista -psonia -menu- recipes" />
   <link id="pwa-manifest" rel="manifest" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -44,7 +44,6 @@
   </script>
 
   <style>
-    /* Μεταβλητές Ανοιχτού Θέματος (Φθινοπωρινή Κρέμα & Καφέ) */
     :root,
     [data-theme="light"] {
       --bg-cream: #faf6f1;
@@ -64,7 +63,6 @@
       color-scheme: light;
     }
 
-    /* Μεταβλητές Σκούρου Θέματος (Ζεστό Σκούρο Κουζίνας / Εσπρέσο) */
     [data-theme="dark"] {
       --bg-cream: #16110e;
       --bg-surface: #211914;
@@ -93,7 +91,6 @@
       background-image: linear-gradient(135deg, var(--header-from), var(--header-to));
     }
 
-    /* Διακριτικό φόντο με καλάθια σούπερ μάρκετ που πέφτουν αργά */
     #basketBgLayer {
       position: fixed;
       inset: 0;
@@ -114,29 +111,17 @@
     }
 
     @keyframes basketFall {
-      0% {
-        transform: translate3d(0, -70px, 0) rotate(-6deg);
-      }
-      50% {
-        transform: translate3d(14px, 50vh, 0) rotate(6deg);
-      }
-      100% {
-        transform: translate3d(-8px, calc(100vh + 80px), 0) rotate(-5deg);
-      }
+      0% { transform: translate3d(0, -70px, 0) rotate(-6deg); }
+      50% { transform: translate3d(14px, 50vh, 0) rotate(6deg); }
+      100% { transform: translate3d(-8px, calc(100vh + 80px), 0) rotate(-5deg); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .falling-basket {
-        animation: none !important;
-        top: 12%;
-      }
+      .falling-basket { animation: none !important; top: 12%; }
     }
 
-    .basket-bg-disabled .falling-basket {
-      display: none !important;
-    }
+    .basket-bg-disabled .falling-basket { display: none !important; }
 
-    /* Προσαρμογή native select & input στο σκούρο θέμα */
     [data-theme="dark"] input,
     [data-theme="dark"] select,
     [data-theme="dark"] textarea {
@@ -153,26 +138,22 @@
 </head>
 <body class="bg-cream text-coffee-ink font-sans antialiased min-h-screen pb-16 selection:bg-coffee-soft selection:text-coffee relative">
 
-  <!-- Διακριτικό φόντο με καλάθια σούπερ μάρκετ -->
   <div id="basketBgLayer" aria-hidden="true"></div>
 
-  <!-- Κύριο Container -->
   <div class="relative z-10 max-w-5xl mx-auto px-3 sm:px-6 pt-4">
 
-    <!-- Επικεφαλίδα, Θέμα (Ήλιος/Φεγγάρι) & Στατιστικά -->
     <header class="header-gradient border border-coffee-border rounded-2xl p-4 sm:p-5 shadow-sm mb-3.5 transition-colors">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-coffee-ink">
-            🛒 Λίστα Σούπερ Μάρκετ • Ο Μπακάλης
+            🛒 Lista -psonia -menu- recipes
           </h1>
           <p class="text-xs sm:text-sm text-coffee-muted mt-0.5">
-            Μικρές αγορές, όμορφη οργάνωση 🍁🌙 • Τιμές, Ντουλάπι, Εβδομαδιαίο Μενού & Συνταγές
+            Μικρές αγορές, όμορφη οργάνωση 🍁🌙 • Τιμές, Ντουλάπι, Εβδομαδιαίο Μενού &amp; Συνταγές
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <!-- Διακόπτης Ήλιος (Ανοιχτό) / Φεγγάρι (Σκούρο) -->
           <div role="group" aria-label="Επιλογή θέματος" class="inline-flex items-center p-1 rounded-xl bg-surface border border-coffee-border shadow-xs">
             <button type="button" id="themeLightBtn" title="Ανοιχτό θέμα (Ήλιος)"
               class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1">
@@ -186,7 +167,6 @@
             </button>
           </div>
 
-          <!-- Εναλλαγή διακριτικού φόντου καλαθιών -->
           <button type="button" id="toggleBasketsBtn" title="Ενεργοποίηση ή απενεργοποίηση καλαθιών στο φόντο"
             class="text-xs font-semibold px-2.5 py-2 rounded-xl bg-surface hover:bg-coffee-soft border border-coffee-border text-coffee-ink transition">
             🧺 Φόντο: Ναι
@@ -204,7 +184,6 @@
         </div>
       </div>
 
-      <!-- Κάρτες Στατιστικών -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-4">
         <div class="bg-surface border border-coffee-border rounded-xl p-2.5 sm:p-3">
           <span class="block text-[11px] sm:text-xs text-coffee-muted">Πρόοδος λίστας</span>
@@ -225,13 +204,12 @@
       </div>
     </header>
 
-    <!-- Sticky Navigation Bar (5 Ενότητες) -->
     <nav aria-label="Ενότητες εφαρμογής" class="sticky top-2 z-20 grid grid-cols-3 sm:grid-cols-5 gap-1.5 bg-cream/90 backdrop-blur-md p-1.5 rounded-2xl border border-coffee-border shadow-sm mb-4">
       <button type="button" data-tab="list" class="tab-btn active py-2.5 px-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-coffee text-white shadow-sm">
         🛒 Λίστα
       </button>
       <button type="button" data-tab="catalog" class="tab-btn py-2.5 px-2 rounded-xl text-xs sm:text-sm font-semibold transition text-coffee-muted hover:bg-coffee-soft/60">
-        💶 Τιμές & Προϊόντα
+        💶 Τιμές &amp; Προϊόντα
       </button>
       <button type="button" data-tab="pantry" class="tab-btn py-2.5 px-2 rounded-xl text-xs sm:text-sm font-semibold transition text-coffee-muted hover:bg-coffee-soft/60">
         🏠 Ντουλάπι
@@ -244,12 +222,8 @@
       </button>
     </nav>
 
-    <!-- ========================================================= -->
-    <!-- 1. TAB: ΛΙΣΤΑ ΨΩΝΙΩΝ                                     -->
-    <!-- ========================================================= -->
+    <!-- 1. ΛΙΣΤΑ ΨΩΝΙΩΝ -->
     <section id="panel-list" class="panel block space-y-3.5">
-
-      <!-- Γρήγορη προσθήκη -->
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
         <div class="flex items-center justify-between mb-2.5">
           <h2 class="text-sm sm:text-base font-bold">⚡ Γρήγορη προσθήκη βασικών ειδών</h2>
@@ -258,7 +232,6 @@
         <div id="quickAddContainer" class="flex flex-wrap gap-1.5"></div>
       </div>
 
-      <!-- Φόρμα προσθήκης προϊόντος -->
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
         <h2 class="text-base font-bold mb-3">＋ Πρόσθεσε προϊόν</h2>
 
@@ -268,10 +241,10 @@
 
           <select id="itemCategory"
             class="lg:col-span-2 w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30">
-            <option>🥬 Φρούτα & Λαχανικά</option>
+            <option>🥬 Φρούτα &amp; Λαχανικά</option>
             <option>🥛 Γαλακτοκομικά</option>
             <option>🥖 Αρτοποιείο</option>
-            <option>🥩 Κρέας & Ψάρια</option>
+            <option>🥩 Κρέας &amp; Ψάρια</option>
             <option>🥫 Τρόφιμα</option>
             <option>🧴 Καθαριστικά</option>
             <option>🧻 Προσωπική φροντίδα</option>
@@ -298,10 +271,8 @@
           </div>
         </form>
 
-        <!-- Έξυπνη ειδοποίηση ντουλαπιού & φθηνότερης τιμής -->
         <div id="smartHintBox" class="hidden mt-2.5 p-3 rounded-xl bg-coffee-soft border border-coffee-border text-xs text-coffee-ink"></div>
 
-        <!-- Εργαλεία Λίστας & Budget -->
         <div class="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-coffee-border/70">
           <input type="number" id="budgetInput" step="0.01" min="0" placeholder="Όριο αγορών (€)"
             class="w-40 px-3 py-2 text-xs sm:text-sm rounded-xl border border-coffee-border bg-cream focus:outline-none focus:ring-2 focus:ring-coffee/30" />
@@ -325,7 +296,6 @@
         <p id="budgetStatus" class="text-xs font-medium mt-2 text-coffee-muted"></p>
       </div>
 
-      <!-- Εμφάνιση Λίστας -->
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
           <h2 class="text-base font-bold">Τα ψώνια μου</h2>
@@ -337,12 +307,10 @@
       </div>
     </section>
 
-    <!-- ========================================================= -->
-    <!-- 2. TAB: ΤΙΜΕΣ & ΠΡΟΪΟΝΤΑ (ΚΑΤΑΛΟΓΟΣ)                     -->
-    <!-- ========================================================= -->
+    <!-- 2. ΤΙΜΕΣ & ΠΡΟΪΟΝΤΑ -->
     <section id="panel-catalog" class="panel hidden space-y-3.5">
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
-        <h2 class="text-base font-bold">💶 Κατάλογος Προϊόντων & Σύγκριση Τιμών</h2>
+        <h2 class="text-base font-bold">💶 Κατάλογος Προϊόντων &amp; Σύγκριση Τιμών</h2>
         <p class="text-xs sm:text-sm text-coffee-muted mt-1">
           Σκρόλαρε τα προϊόντα, βρες σε ποιο σούπερ μάρκετ συμφέρει περισσότερο και πρόσθεσέ τα στη λίστα σου.
         </p>
@@ -354,10 +322,10 @@
           <select id="catalogCategoryFilter"
             class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30">
             <option value="ALL">Όλες οι κατηγορίες</option>
-            <option>🥬 Φρούτα & Λαχανικά</option>
+            <option>🥬 Φρούτα &amp; Λαχανικά</option>
             <option>🥛 Γαλακτοκομικά</option>
             <option>🥖 Αρτοποιείο</option>
-            <option>🥩 Κρέας & Ψάρια</option>
+            <option>🥩 Κρέας &amp; Ψάρια</option>
             <option>🥫 Τρόφιμα</option>
             <option>🧴 Καθαριστικά</option>
             <option>🧻 Προσωπική φροντίδα</option>
@@ -373,7 +341,6 @@
         </div>
       </div>
 
-      <!-- Καταχώρηση / Ενημέρωση τιμής -->
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
         <h3 class="text-sm sm:text-base font-bold mb-2.5">＋ Καταχώρηση / Ενημέρωση τιμής σε κατάστημα</h3>
         <form id="priceForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
@@ -384,9 +351,9 @@
             class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30">
             <option>🥫 Τρόφιμα</option>
             <option>🥛 Γαλακτοκομικά</option>
-            <option>🥬 Φρούτα & Λαχανικά</option>
+            <option>🥬 Φρούτα &amp; Λαχανικά</option>
             <option>🥖 Αρτοποιείο</option>
-            <option>🥩 Κρέας & Ψάρια</option>
+            <option>🥩 Κρέας &amp; Ψάρια</option>
             <option>🧴 Καθαριστικά</option>
             <option>🧻 Προσωπική φροντίδα</option>
             <option>📦 Διάφορα</option>
@@ -412,7 +379,6 @@
         </form>
       </div>
 
-      <!-- Scrollable Κατάλογος Προϊόντων -->
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
         <div class="flex items-center justify-between mb-2.5">
           <h3 class="text-sm sm:text-base font-bold">Προϊόντα (κύλιση)</h3>
@@ -422,9 +388,7 @@
       </div>
     </section>
 
-    <!-- ========================================================= -->
-    <!-- 3. TAB: ΝΤΟΥΛΑΠΙ / Ο ΜΠΑΚΑΛΗΣ                            -->
-    <!-- ========================================================= -->
+    <!-- 3. ΝΤΟΥΛΑΠΙ / Ο ΜΠΑΚΑΛΗΣ -->
     <section id="panel-pantry" class="panel hidden space-y-3.5">
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
         <h2 class="text-base font-bold">🏠 Ο Μπακάλης — Το Ντουλάπι του Σπιτιού</h2>
@@ -432,90 +396,85 @@
           Παρακολούθησε τι υπάρχει ήδη στο σπίτι. Όταν ετοιμάζεις συνταγή ή εβδομαδιαίο μενού, ελέγχεται αυτόματα ώστε να μην αγοράζεις διπλά!
         </p>
 
-        <form id="pantryForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 mt-3">
-          <input type="text" id="pantryName" placeholder="Είδος (π.χ. Φακές, Ελαιόλαδο)" required
-            class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
+        <form id="pantryForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 mt-3">
+          <input type="text" id="pantryName" placeholder="Είδος (π.χ. Ρύζι, Ελαιόλαδο)" required
+            class="lg:col-span-2 w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
 
-          <div class="flex items-center gap-1.5">
-            <input type="number" id="pantryCount" min="1" value="1"
-              class="w-20 px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
-            <input type="text" id="pantryUnit" placeholder="Μονάδα (π.χ. πακέτα)" value="τεμ."
-              class="flex-1 px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
-          </div>
+          <input type="text" id="pantryQty" placeholder="Ποσότητα (π.χ. 2 πακέτα)"
+            class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
 
           <select id="pantryStatus"
             class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30">
-            <option value="ok">🟢 Επαρκές</option>
-            <option value="low">🟡 Λίγο απόθεμα</option>
-            <option value="expiring">🟠 Λήγει σύντομα</option>
+            <option value="ok">✅ Επαρκές</option>
+            <option value="low">⚠️ Λίγο</option>
+            <option value="expiring">⏳ Λήγει σύντομα</option>
           </select>
 
-          <input type="text" id="pantryNote" placeholder="Θέση / Σημείωση (π.χ. Ράφι 2)"
-            class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
-
           <button type="submit"
-            class="sm:col-span-2 lg:col-span-4 w-full py-2.5 px-4 rounded-xl bg-coffee hover:bg-coffee-dark text-white font-semibold text-sm transition">
-            ＋ Αποθήκευση στο ντουλάπι
+            class="w-full py-2.5 px-4 rounded-xl bg-coffee hover:bg-coffee-dark text-white font-semibold text-sm transition">
+            ＋ Στο ντουλάπι
           </button>
+
+          <input type="text" id="pantryNote" placeholder="Σημείωση ή ημερομηνία λήξης (προαιρετικά)"
+            class="sm:col-span-2 lg:col-span-5 w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
         </form>
       </div>
 
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+        <div class="flex items-center justify-between mb-2.5">
           <h3 class="text-sm sm:text-base font-bold">Απόθεμα σπιτιού</h3>
-          <input type="text" id="pantrySearch" placeholder="🔍 Αναζήτηση στο ντουλάπι..."
-            class="sm:w-64 px-3 py-2 text-xs sm:text-sm rounded-xl border border-coffee-border bg-cream focus:outline-none focus:ring-2 focus:ring-coffee/30" />
+          <div class="flex gap-1.5" id="pantryFilterBtns">
+            <button type="button" data-pfilter="ALL" class="pfilter-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-coffee text-white">Όλα</button>
+            <button type="button" data-pfilter="low" class="pfilter-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-coffee-soft text-coffee">Λίγο</button>
+            <button type="button" data-pfilter="expiring" class="pfilter-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-coffee-soft text-coffee">Λήγει</button>
+          </div>
         </div>
         <div id="pantryContainer" class="space-y-2"></div>
       </div>
     </section>
 
-    <!-- ========================================================= -->
-    <!-- 4. TAB: ΕΒΔΟΜΑΔΙΑΙΟ ΜΕΝΟΥ (7 ΗΜΕΡΕΣ ΧΩΡΙΣ ΕΠΑΝΑΛΗΨΕΙΣ)   -->
-    <!-- ========================================================= -->
+    <!-- 4. ΕΒΔΟΜΑΔΙΑΙΟ ΜΕΝΟΥ -->
     <section id="panel-weekly" class="panel hidden space-y-3.5">
-      <div class="header-gradient border border-coffee-border rounded-2xl p-4 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h2 class="text-base sm:text-lg font-bold">📅 Εβδομαδιαίο Πρόγραμμα Φαγητού</h2>
+            <h2 class="text-base font-bold">📅 Εβδομαδιαίο Πρόγραμμα Φαγητού</h2>
             <p class="text-xs sm:text-sm text-coffee-muted mt-0.5">
               14 διαφορετικά γεύματα (Δευτέρα–Κυριακή) χωρίς καμία επανάληψη. Πάτησε σε οποιοδήποτε φαγητό για να δεις τη συνταγή!
             </p>
           </div>
           <div class="flex flex-wrap gap-2">
             <button type="button" id="generateWeekBtn"
-              class="px-3.5 py-2.5 rounded-xl bg-coffee hover:bg-coffee-dark text-white font-semibold text-xs sm:text-sm transition shadow-sm">
-              🎲 Πρότεινε νέα εβδομάδα
+              class="px-3.5 py-2.5 rounded-xl bg-coffee hover:bg-coffee-dark text-white text-xs sm:text-sm font-semibold transition shadow-sm">
+              🎲 Πρότεινε διαφορετική εβδομάδα
             </button>
-            <button type="button" id="addWeekToListBtn"
-              class="px-3.5 py-2.5 rounded-xl bg-sage hover:opacity-95 text-white font-semibold text-xs sm:text-sm transition shadow-sm">
-              🛒 Όλα τα υλικά εβδομάδας στη λίστα
+            <button type="button" id="weekToListBtn"
+              class="px-3.5 py-2.5 rounded-xl bg-sage-soft hover:opacity-90 text-sage border border-coffee-border text-xs sm:text-sm font-semibold transition">
+              🛒 Υλικά εβδομάδας στη λίστα
             </button>
           </div>
         </div>
       </div>
 
-      <div id="weeklyPlanContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      <div id="weeklyContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
     </section>
 
-    <!-- ========================================================= -->
-    <!-- 5. TAB: ΒΙΒΛΙΟ ΣΥΝΤΑΓΩΝ (22 ΕΤΟΙΜΕΣ + ΔΙΚΕΣ ΣΟΥ)          -->
-    <!-- ========================================================= -->
+    <!-- 5. ΒΙΒΛΙΟ ΣΥΝΤΑΓΩΝ -->
     <section id="panel-recipes" class="panel hidden space-y-3.5">
       <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
           <div>
-            <h2 class="text-base font-bold">📖 Βιβλίο Συνταγών (Υλικά & Εκτέλεση)</h2>
-            <p class="text-xs text-coffee-muted">Πάτησε «Δες συνταγή» για να δεις αναλυτικά υλικά, βήματα εκτέλεσης και τι υπάρχει στο ντουλάπι σου.</p>
+            <h2 class="text-base font-bold">📖 Βιβλίο Συνταγών (Υλικά &amp; Εκτέλεση)</h2>
+            <p class="text-xs sm:text-sm text-coffee-muted">Πάτησε «Δες συνταγή» για να δεις αναλυτικά υλικά, βήματα εκτέλεσης και τι υπάρχει στο ντουλάπι σου.</p>
           </div>
-          <button type="button" id="toggleNewRecipeFormBtn"
-            class="self-start px-3.5 py-2 rounded-xl bg-coffee-soft hover:bg-coffee hover:text-white text-coffee font-semibold text-xs transition">
-            ＋ Προσθήκη δικής σου συνταγής
+          <button type="button" id="toggleNewRecipeBtn"
+            class="px-3.5 py-2 rounded-xl bg-coffee hover:bg-coffee-dark text-white text-xs sm:text-sm font-semibold transition shrink-0">
+            ＋ Νέα δική μου συνταγή
           </button>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          <input type="text" id="recipeSearch" placeholder="🔍 Αναζήτηση συνταγής ή υλικού (π.χ. φακές, κοτόπουλο)..."
+          <input type="text" id="recipeSearch" placeholder="🔍 Αναζήτηση συνταγής ή υλικού..."
             class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
 
           <select id="recipeCategoryFilter"
@@ -530,36 +489,34 @@
           </select>
         </div>
 
-        <!-- Φόρμα προσθήκης δικής σου συνταγής -->
-        <form id="recipeForm" class="hidden mt-4 pt-4 border-t border-coffee-border grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-          <input type="text" id="recipeTitle" placeholder="Τίτλος συνταγής" required
-            class="lg:col-span-2 w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
+        <form id="recipeForm" class="hidden mt-4 pt-4 border-t border-coffee-border space-y-2.5">
+          <h3 class="text-sm font-bold">Καταχώρηση νέας συνταγής</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <input type="text" id="recipeTitle" placeholder="Τίτλος συνταγής" required
+              class="w-full px-3 py-2 text-sm rounded-xl border border-coffee-border bg-surface" />
+            <select id="recipeCategory"
+              class="w-full px-3 py-2 text-sm rounded-xl border border-coffee-border bg-surface">
+              <option value="Όσπρια">🫘 Όσπρια</option>
+              <option value="Κρεατικά">🍖 Κρεατικά</option>
+              <option value="Ζυμαρικά">🍝 Ζυμαρικά</option>
+              <option value="Ψάρια">🐟 Ψάρια</option>
+              <option value="Λαδερά">🥗 Λαδερά</option>
+              <option value="Ελαφριά">🍳 Ελαφριά</option>
+            </select>
+            <input type="text" id="recipeTime" placeholder="Χρόνος &amp; μερίδες (π.χ. 35' • 4 μερίδες)"
+              class="w-full px-3 py-2 text-sm rounded-xl border border-coffee-border bg-surface" />
+          </div>
 
-          <select id="recipeCategory"
-            class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30">
-            <option value="Κρεατικά">🍖 Κρεατικά</option>
-            <option value="Όσπρια">🫘 Όσπρια</option>
-            <option value="Ζυμαρικά">🍝 Ζυμαρικά</option>
-            <option value="Ψάρια">🐟 Ψάρια</option>
-            <option value="Λαδερά">🥗 Λαδερά</option>
-            <option value="Ελαφριά">🍳 Ελαφριά</option>
-          </select>
+          <textarea id="recipeIngredients" rows="3" placeholder="Υλικά — ένα ανά γραμμή (π.χ.&#10;500γρ κοτόπουλο φιλέτο&#10;2 λεμόνια&#10;100ml ελαιόλαδο)" required
+            class="w-full px-3 py-2 text-sm rounded-xl border border-coffee-border bg-surface"></textarea>
 
-          <input type="text" id="recipeMeta" placeholder="Χρόνος & μερίδες (π.χ. 35' • 4 μερ.)"
-            class="w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30" />
+          <textarea id="recipeSteps" rows="3" placeholder="Εκτέλεση — ένα βήμα ανά γραμμή (π.χ.&#10;Κόβουμε το κοτόπουλο σε κομμάτια.&#10;Σοτάρουμε στο ελαιόλαδο και σβήνουμε με λεμόνι.&#10;Σιγομαγειρεύουμε μέχρι να δέσει η σάλτσα.)" required
+            class="w-full px-3 py-2 text-sm rounded-xl border border-coffee-border bg-surface"></textarea>
 
-          <textarea id="recipeIngredients" rows="4" required
-            placeholder="Υλικά (ένα ανά γραμμή, π.χ.&#10;500γρ κιμάς μοσχαρίσιος&#10;1 πακέτο μακαρόνια&#10;1 συσκ. σάλτσα ντομάτας)"
-            class="sm:col-span-2 w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30"></textarea>
-
-          <textarea id="recipeSteps" rows="4" required
-            placeholder="Πώς γίνεται / Βήματα εκτέλεσης (ένα βήμα ανά γραμμή)..."
-            class="sm:col-span-2 w-full px-3 py-2.5 text-sm rounded-xl border border-coffee-border bg-surface focus:outline-none focus:ring-2 focus:ring-coffee/30"></textarea>
-
-          <button type="submit"
-            class="sm:col-span-2 lg:col-span-4 w-full py-2.5 px-4 rounded-xl bg-coffee hover:bg-coffee-dark text-white font-semibold text-sm transition">
-            Αποθήκευση συνταγής
-          </button>
+          <div class="flex justify-end gap-2">
+            <button type="button" id="cancelRecipeBtn" class="px-3.5 py-2 rounded-xl border border-coffee-border text-xs font-semibold">Ακύρωση</button>
+            <button type="submit" class="px-4 py-2 rounded-xl bg-coffee text-white text-xs font-semibold">Αποθήκευση συνταγής</button>
+          </div>
         </form>
       </div>
 
@@ -568,901 +525,684 @@
 
   </div>
 
-  <!-- ========================================================= -->
-  <!-- MODAL: ΑΝΑΛΥΤΙΚΗ ΚΑΡΤΕΛΑ ΣΥΝΤΑΓΗΣ (ΥΛΙΚΑ & ΠΩΣ ΓΙΝΕΤΑΙ)    -->
-  <!-- ========================================================= -->
-  <div id="recipeDetailModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-surface border border-coffee-border rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-5 shadow-xl space-y-4">
+  <!-- MODAL ΠΛΗΡΟΥΣ ΣΥΝΤΑΓΗΣ -->
+  <div id="recipeModal" class="fixed inset-0 z-40 hidden bg-black/50 backdrop-blur-xs p-3 sm:p-6 overflow-y-auto">
+    <div class="max-w-2xl mx-auto my-4 bg-surface border border-coffee-border rounded-2xl p-4 sm:p-6 shadow-xl space-y-4">
       <div class="flex items-start justify-between gap-3 border-b border-coffee-border pb-3">
-        <div>
-          <span id="modalRecipeBadge" class="inline-block px-2.5 py-0.5 rounded-full bg-coffee-soft text-coffee font-semibold text-xs mb-1"></span>
-          <h3 id="modalRecipeTitle" class="text-lg sm:text-xl font-bold text-coffee-ink"></h3>
-          <p id="modalRecipeMeta" class="text-xs text-coffee-muted mt-0.5"></p>
+        <div class="flex items-center gap-3">
+          <div id="modalRecipeArt" class="shrink-0"></div>
+          <div>
+            <span id="modalRecipeBadge" class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-coffee-soft text-coffee mb-1"></span>
+            <h3 id="modalRecipeTitle" class="text-lg sm:text-xl font-bold"></h3>
+            <p id="modalRecipeMeta" class="text-xs text-coffee-muted mt-0.5"></p>
+          </div>
         </div>
-        <button type="button" onclick="closeModal('recipeDetailModal')" class="px-2.5 py-1 rounded-lg text-coffee-muted hover:bg-cream font-bold">✕</button>
+        <button type="button" id="closeRecipeModal" class="px-2.5 py-1.5 rounded-xl border border-coffee-border text-xs font-semibold hover:bg-cream">✕</button>
       </div>
 
-      <!-- Υλικά -->
-      <div class="p-3.5 rounded-xl bg-cream border border-coffee-border">
+      <div>
         <div class="flex items-center justify-between mb-2">
-          <h4 class="text-xs font-bold uppercase tracking-wide text-coffee">🛒 Τι θα χρειαστούμε (Υλικά)</h4>
+          <h4 class="text-sm font-bold">🛒 Τι θα χρειαστούμε (Υλικά)</h4>
           <span class="text-[11px] text-coffee-muted">Έλεγχος με ντουλάπι</span>
         </div>
-        <ul id="modalRecipeIngredients" class="space-y-1.5 text-xs sm:text-sm"></ul>
+        <ul id="modalRecipeIngredients" class="space-y-1.5 text-sm"></ul>
       </div>
 
-      <!-- Βήμα-βήμα εκτέλεση -->
-      <div class="space-y-2">
-        <h4 class="text-xs font-bold uppercase tracking-wide text-coffee">👩‍🍳 Πώς γίνεται (Βήμα-βήμα)</h4>
-        <ol id="modalRecipeSteps" class="space-y-2 text-xs sm:text-sm text-coffee-ink leading-relaxed list-decimal list-inside bg-surface p-3.5 rounded-xl border border-coffee-border"></ol>
+      <div>
+        <h4 class="text-sm font-bold mb-2">👩‍🍳 Πώς γίνεται (Βήμα-βήμα)</h4>
+        <ol id="modalRecipeSteps" class="list-decimal list-inside space-y-2 text-sm leading-relaxed"></ol>
       </div>
 
-      <div class="flex flex-wrap gap-2 pt-2 border-t border-coffee-border">
-        <button type="button" id="modalAddRecipeToListBtn"
-          class="flex-1 py-2.5 px-4 rounded-xl bg-coffee hover:bg-coffee-dark text-white font-semibold text-xs sm:text-sm transition shadow-sm">
-          ＋ Προσθήκη υλικών που λείπουν στη λίστα
+      <div class="flex flex-wrap justify-end gap-2 pt-3 border-t border-coffee-border">
+        <button type="button" id="modalAddMissingBtn" class="px-4 py-2.5 rounded-xl bg-coffee hover:bg-coffee-dark text-white text-xs sm:text-sm font-semibold">
+          ＋ Όσα λείπουν στη λίστα
         </button>
-        <button type="button" onclick="closeModal('recipeDetailModal')"
-          class="py-2.5 px-4 rounded-xl border border-coffee-border bg-surface hover:bg-cream font-semibold text-xs sm:text-sm">
-          Κλείσιμο
+        <button type="button" id="modalAddAllBtn" class="px-4 py-2.5 rounded-xl bg-coffee-soft text-coffee text-xs sm:text-sm font-semibold">
+          ＋ Όλα τα υλικά στη λίστα
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ========================================================= -->
-  <!-- MODAL: ΟΔΗΓΙΕΣ ΕΓΚΑΤΑΣΤΑΣΗΣ PWA (ANDROID & IPHONE)        -->
-  <!-- ========================================================= -->
-  <div id="installModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-surface border border-coffee-border rounded-2xl max-w-md w-full p-5 shadow-xl space-y-4">
+  <!-- MODAL ΕΓΚΑΤΑΣΤΑΣΗΣ ΣΕ ΚΙΝΗΤΟ -->
+  <div id="installModal" class="fixed inset-0 z-40 hidden bg-black/50 backdrop-blur-xs p-4 flex items-center justify-center">
+    <div class="max-w-md w-full bg-surface border border-coffee-border rounded-2xl p-5 shadow-xl space-y-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-base sm:text-lg font-bold">📲 Εγκατάσταση στο Κινητό</h3>
-        <button type="button" onclick="closeModal('installModal')" class="px-2.5 py-1 rounded-lg text-coffee-muted hover:bg-cream font-bold">✕</button>
+        <h3 class="text-base font-bold">📲 Εγκατάσταση στο Κινητό</h3>
+        <button type="button" id="closeInstallModal" class="px-2.5 py-1 rounded-lg border border-coffee-border text-xs font-semibold">✕</button>
       </div>
       <p class="text-xs sm:text-sm text-coffee-muted">
-        Αποθήκευσε την εφαρμογή στην αρχική οθόνη του κινητού σου ώστε να ανοίγει σε πλήρη οθόνη και να λειτουργεί και χωρίς internet:
+        Αποθήκευσε το <strong>Lista -psonia -menu- recipes</strong> στην αρχική οθόνη του κινητού σου για γρήγορη πρόσβαση:
       </p>
-
-      <div class="p-3.5 rounded-xl bg-cream border border-coffee-border space-y-1.5">
-        <strong class="text-sm text-coffee-ink block">🍎 iPhone / iPad (Safari):</strong>
-        <ol class="text-xs text-coffee-muted list-decimal list-inside space-y-1">
+      <div class="p-3 rounded-xl bg-cream border border-coffee-border text-xs space-y-1">
+        <strong>🍎 iPhone / iPad (Safari):</strong>
+        <ol class="list-decimal list-inside space-y-0.5 text-coffee-muted">
           <li>Άνοιξε τη σελίδα στον <strong>Safari</strong>.</li>
-          <li>Πάτησε το κουμπί <strong>Κοινή χρήση (Share)</strong> στο κάτω μέρος.</li>
+          <li>Πάτησε το κουμπί <strong>Κοινή χρήση (Share)</strong>.</li>
           <li>Επίλεξε <strong>«Προσθήκη στην οθόνη Αφετηρίας»</strong>.</li>
         </ol>
       </div>
-
-      <div class="p-3.5 rounded-xl bg-cream border border-coffee-border space-y-1.5">
-        <strong class="text-sm text-coffee-ink block">🤖 Android (Chrome):</strong>
-        <ol class="text-xs text-coffee-muted list-decimal list-inside space-y-1">
+      <div class="p-3 rounded-xl bg-cream border border-coffee-border text-xs space-y-1">
+        <strong>🤖 Android (Chrome):</strong>
+        <ol class="list-decimal list-inside space-y-0.5 text-coffee-muted">
           <li>Άνοιξε τη σελίδα στον <strong>Chrome</strong>.</li>
           <li>Πάτησε τις <strong>3 τελείες (⋮)</strong> πάνω δεξιά.</li>
           <li>Επίλεξε <strong>«Εγκατάσταση εφαρμογής»</strong> ή <strong>«Προσθήκη στην αρχική οθόνη»</strong>.</li>
         </ol>
       </div>
-
-      <button type="button" id="triggerInstallPromptBtn" class="hidden w-full py-2.5 rounded-xl bg-sage text-white font-semibold text-sm">
-        ⚡ Άμεση εγκατάσταση τώρα
-      </button>
-      <button type="button" onclick="closeModal('installModal')" class="w-full py-2.5 rounded-xl bg-coffee text-white font-semibold text-sm">
-        Το κατάλαβα
-      </button>
     </div>
   </div>
 
-  <!-- ========================================================= -->
-  <!-- MODAL: ΑΝΤΙΓΡΑΦΟ ΑΣΦΑΛΕΙΑΣ (EXPORT / IMPORT JSON)         -->
-  <!-- ========================================================= -->
-  <div id="backupModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-surface border border-coffee-border rounded-2xl max-w-md w-full p-5 shadow-xl space-y-4">
+  <!-- MODAL BACKUP -->
+  <div id="backupModal" class="fixed inset-0 z-40 hidden bg-black/50 backdrop-blur-xs p-4 flex items-center justify-center">
+    <div class="max-w-md w-full bg-surface border border-coffee-border rounded-2xl p-5 shadow-xl space-y-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-base sm:text-lg font-bold">💾 Αντίγραφο & Επαναφορά Δεδομένων</h3>
-        <button type="button" onclick="closeModal('backupModal')" class="px-2.5 py-1 rounded-lg text-coffee-muted hover:bg-cream font-bold">✕</button>
+        <h3 class="text-base font-bold">💾 Αντίγραφο &amp; Επαναφορά Δεδομένων</h3>
+        <button type="button" id="closeBackupModal" class="px-2.5 py-1 rounded-lg border border-coffee-border text-xs font-semibold">✕</button>
       </div>
       <p class="text-xs sm:text-sm text-coffee-muted">
-        Τα δεδομένα σου αποθηκεύονται αυτόματα στη συσκευή σου. Κατέβασε αντίγραφο ασφαλείας (JSON) για μεταφορά σε άλλη συσκευή.
+        Τα δεδομένα σου αποθηκεύονται αυτόματα στη συσκευή σου. Κατέβασε αντίγραφο ασφαλείας (JSON) ή επανέφερέ το.
       </p>
-
-      <div class="space-y-2.5">
-        <button type="button" id="exportJsonBtn"
-          class="w-full py-2.5 px-4 rounded-xl bg-coffee hover:bg-coffee-dark text-white font-semibold text-sm transition">
-          ⬇️ Λήψη αντιγράφου ασφαλείας (JSON)
+      <div class="flex flex-col gap-2 pt-1">
+        <button type="button" id="exportJsonBtn" class="w-full py-2.5 px-4 rounded-xl bg-coffee hover:bg-coffee-dark text-white text-xs sm:text-sm font-semibold">
+          ⬇️ Λήψη αντιγράφου ασφαλείας (.json)
         </button>
-
-        <label class="block w-full text-center py-2.5 px-4 rounded-xl border border-coffee-border bg-cream hover:bg-coffee-soft/60 text-coffee-ink font-semibold text-sm cursor-pointer transition">
-          ⬆️ Επαναφορά από αρχείο (JSON)
+        <label class="w-full py-2.5 px-4 rounded-xl bg-coffee-soft text-coffee text-center text-xs sm:text-sm font-semibold cursor-pointer">
+          ⬆️ Επαναφορά από αρχείο (.json)
           <input type="file" id="importJsonInput" accept="application/json" class="hidden" />
         </label>
-
-        <button type="button" id="resetDefaultBtn"
-          class="w-full py-2 px-4 rounded-xl border border-coffee-border bg-cream hover:bg-coffee-soft text-coffee-ink font-semibold text-xs transition">
-          ↻ Επαναφορά αρχικών 22 συνταγών & καταλόγου
+        <button type="button" id="resetDemoBtn" class="w-full py-2 px-4 rounded-xl border border-coffee-border text-xs text-coffee-muted hover:text-coffee-ink">
+          Επαναφορά προεπιλεγμένων δεδομένων
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Toast ειδοποίηση -->
-  <div id="toast" class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-coffee text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-200 z-50"></div>
+  <div id="toast" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-coffee-ink text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-200"></div>
 
   <script>
-    const STORAGE_KEY = "fani_bakalis_complete_v2";
+    const STORAGE_KEY = "lista_psonia_menu_recipes_v1";
+    const DAYS = ["Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή"];
 
-    // =========================================================
-    // ΔΙΑΚΡΙΤΙΚΟ ΦΟΝΤΟ ΜΕ ΚΑΛΑΘΙΑ ΣΟΥΠΕΡ ΜΑΡΚΕΤ ΠΟΥ ΠΕΦΤΟΥΝ ΑΡΓΑ
-    // =========================================================
-    (function createFallingBaskets() {
-      const layer = document.getElementById("basketBgLayer");
-      if (!layer) return;
-
-      const basketSvg = `
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
-          <path d="M5 10h14l-1.5 9h-11L5 10z"></path>
-          <path d="M8.5 10L12 5l3.5 5"></path>
-          <line x1="9.5" y1="13" x2="9.5" y2="16"></line>
-          <line x1="14.5" y1="13" x2="14.5" y2="16"></line>
-        </svg>
-      `;
-
-      const basketConfigs = [
-        { left: "4%", size: 28, duration: 28, delay: -4 },
-        { left: "14%", size: 22, duration: 34, delay: -19 },
-        { left: "25%", size: 32, duration: 31, delay: -11 },
-        { left: "37%", size: 24, duration: 36, delay: -25 },
-        { left: "49%", size: 30, duration: 29, delay: -7 },
-        { left: "61%", size: 22, duration: 35, delay: -16 },
-        { left: "73%", size: 32, duration: 30, delay: -22 },
-        { left: "84%", size: 26, duration: 33, delay: -13 },
-        { left: "93%", size: 24, duration: 37, delay: -3 }
-      ];
-
-      layer.innerHTML = basketConfigs.map((cfg) => `
-        <div class="falling-basket" style="left:${cfg.left}; width:${cfg.size}px; height:${cfg.size}px; animation-duration:${cfg.duration}s; animation-delay:${cfg.delay}s;">
-          ${basketSvg}
-        </div>
-      `).join("");
-    })();
-
-    // =========================================================
-    // DYNAMIC PWA MANIFEST & SERVICE WORKER REGISTRATION
-    // =========================================================
-    (function setupPWA() {
-      try {
-        const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="42" fill="#7c4a2d"/><text x="96" y="124" font-size="92" text-anchor="middle">🛒</text></svg>`;
-        const iconUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(iconSvg);
-        const manifest = {
-          name: "Λίστα Σούπερ Μάρκετ • Ο Μπακάλης & Συνταγές",
-          short_name: "Ο Μπακάλης",
-          start_url: ".",
-          display: "standalone",
-          background_color: "#faf6f1",
-          theme_color: "#7c4a2d",
-          icons: [{ src: iconUrl, sizes: "192x192", type: "image/svg+xml" }]
-        };
-        const manifestBlob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
-        document.getElementById("pwa-manifest").setAttribute("href", URL.createObjectURL(manifestBlob));
-
-        if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
-          const swCode = `
-            const CACHE_NAME = 'bakalis-cache-v1';
-            self.addEventListener('install', (e) => {
-              e.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(['./'])));
-              self.skipWaiting();
-            });
-            self.addEventListener('fetch', (e) => {
-              e.respondWith(
-                fetch(e.request).catch(() => caches.match(e.request))
-              );
-            });
-          `;
-          const swBlob = new Blob([swCode], { type: "application/javascript" });
-          navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
-        }
-      } catch (e) {}
-    })();
-
-    let deferredPrompt = null;
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById("triggerInstallPromptBtn").classList.remove("hidden");
-    });
-
-    document.getElementById("triggerInstallPromptBtn").addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      closeModal("installModal");
-    });
-
-    // =========================================================
-    // ΑΡΧΙΚΑ ΔΕΔΟΜΕΝΑ (QUICK ITEMS, 22 ΣΥΝΤΑΓΕΣ, ΚΑΤΑΛΟΓΟΣ)
-    // =========================================================
     const QUICK_ITEMS = [
-      { name: "Φρέσκο Γάλα 1L", category: "🥛 Γαλακτοκομικά" },
-      { name: "Ψωμί", category: "🥖 Αρτοποιείο" },
-      { name: "Αυγά (6άδα)", category: "🥛 Γαλακτοκομικά" },
-      { name: "Ντομάτες", category: "🥬 Φρούτα & Λαχανικά" },
-      { name: "Ελαιόλαδο", category: "🥫 Τρόφιμα" },
-      { name: "Καφές", category: "🥫 Τρόφιμα" },
-      { name: "Τυρί φέτα", category: "🥛 Γαλακτοκομικά" },
-      { name: "Χαρτί υγείας", category: "🧻 Προσωπική φροντίδα" }
-    ];
-
-    const DAYS_OF_WEEK = ["Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή"];
-
-    const BUILTIN_RECIPES = [
-      {
-        id: "rec_1",
-        title: "Φακές σούπα παραδοσιακές",
-        category: "Όσπρια",
-        time: "40' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["500γρ φακές", "1 κρεμμύδι ξερό", "2 σκελίδες σκόρδο", "2 καρότα", "1 φύλλο δάφνης", "1 κ.σ. πελτές ντομάτας", "Ελαιόλαδο", "Ξίδι (για το σερβίρισμα)"],
-        steps: [
-          "Ξεπλένουμε καλά τις φακές σε σουρωτήρι και τις βάζουμε σε κατσαρόλα με νερό να πάρουν μια βράση για 5 λεπτά. Στραγγίζουμε το πρώτο νερό.",
-          "Ξαναβάζουμε τις φακές στην κατσαρόλα με 1,5 λίτρο ζεστό νερό, ψιλοκομμένο κρεμμύδι, καρότα σε ροδέλες, ολόκληρες σκελίδες σκόρδο, δάφνη και τον πελτέ ντομάτας.",
-          "Σιγοβράζουμε με μισοσκεπασμένη κατσαρόλα για περίπου 30 λεπτά μέχρι να μαλακώσουν.",
-          "Τα τελευταία 5 λεπτά προσθέτουμε αλάτι, πιπέρι και 4-5 κ.σ. ελαιόλαδο για να χυλώσουν."
-        ]
-      },
-      {
-        id: "rec_2",
-        title: "Κοτόπουλο λεμονάτο με πατάτες φούρνου",
-        category: "Κρεατικά",
-        time: "65' προετοιμασία & ψήσιμο",
-        servings: "4 μερίδες",
-        ingredients: ["1 κιλό κοτόπουλο σε μερίδες", "1 κιλό πατάτες", "2 λεμόνια (χυμός)", "1 κ.σ. μουστάρδα", "1 κ.γ. ρίγανη", "2 σκελίδες σκόρδο", "Ελαιόλαδο"],
-        steps: [
-          "Προθερμαίνουμε τον φούρνο στους 200°C. Καθαρίζουμε και κόβουμε τις πατάτες κυδωνάτες.",
-          "Τοποθετούμε το κοτόπουλο και τις πατάτες σε ταψί και αλατοπιπερώνουμε καλά.",
-          "Χτυπάμε σε μπολ 1/2 φλιτζάνι ελαιόλαδο, τον χυμό από 2 λεμόνια, τη μουστάρδα, τη ρίγανη, λιωμένο σκόρδο και 1 ποτήρι ζεστό νερό.",
-          "Περιχύνουμε το φαγητό, σκεπάζουμε με λαδόκολλα για τα πρώτα 35 λεπτά και ξεσκεπάζουμε για άλλα 25 λεπτά μέχρι να ροδίσει."
-        ]
-      },
-      {
-        id: "rec_3",
-        title: "Μακαρόνια με κιμά",
-        category: "Ζυμαρικά",
-        time: "45' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["500γρ κιμάς μοσχαρίσιος", "1 πακέτο μακαρόνια Νο6", "1 κρεμμύδι ξερό", "1 συσκ. σάλτσα ντομάτας", "1 ξυλάκι κανέλα", "Ελαιόλαδο", "Τριμμένο τυρί"],
-        steps: [
-          "Ζεσταίνουμε ελαιόλαδο σε πλατιά κατσαρόλα και σοτάρουμε το ψιλοκομμένο κρεμμύδι για 3 λεπτά.",
-          "Προσθέτουμε τον κιμά και τον σπάμε με ξύλινη κουτάλα μέχρι να καβουρδιστεί και να αλλάξει χρώμα.",
-          "Ρίχνουμε τη σάλτσα ντομάτας, την κανέλα, αλάτι, πιπέρι και 1/2 ποτήρι νερό. Σιγοβράζουμε 25 λεπτά μέχρι να δέσει η σάλτσα.",
-          "Βράζουμε τα μακαρόνια σε αλατισμένο νερό, τα στραγγίζουμε και σερβίρουμε με τον κιμά και τριμμένο τυρί."
-        ]
-      },
-      {
-        id: "rec_4",
-        title: "Γεμιστά με ρύζι & μυρωδικά",
-        category: "Λαδερά",
-        time: "75' προετοιμασία & ψήσιμο",
-        servings: "4 μερίδες",
-        ingredients: ["4 μεγάλες ντομάτες", "4 πιπεριές", "200γρ ρύζι καρολίνα", "1 κρεμμύδι ξερό", "1/2 ματσάκι μαϊντανός", "Λίγος δυόσμος", "2 πατάτες", "Ελαιόλαδο"],
-        steps: [
-          "Κόβουμε τα καπάκια από τις ντομάτες και τις πιπεριές, αφαιρούμε τους σπόρους από τις πιπεριές και αδειάζουμε την ψίχα από τις ντομάτες.",
-          "Πολτοποιούμε την ψίχα της ντομάτας και την ανακατεύουμε με το ρύζι, ψιλοκομμένο κρεμμύδι, μαϊντανό, δυόσμο, αλάτι, πιπέρι και 4 κ.σ. ελαιόλαδο.",
-          "Γεμίζουμε τα λαχανικά κατά τα 3/4 (γιατί το ρύζι φουσκώνει), βάζουμε ενδιάμεσα πατάτες κυδωνάτες, περιχύνουμε με ελαιόλαδο και 1 ποτήρι νερό.",
-          "Ψήνουμε στους 190°C για περίπου 1 ώρα και 15 λεπτά μέχρι να μελώσουν."
-        ]
-      },
-      {
-        id: "rec_5",
-        title: "Τσιπούρα ψητή με χόρτα & λαδολέμονο",
-        category: "Ψάρια",
-        time: "35' προετοιμασία & ψήσιμο",
-        servings: "2-4 μερίδες",
-        ingredients: ["2 τσιπούρες καθαρισμένες", "1 κιλό χόρτα εποχής", "2 λεμόνια", "Ρίγανη", "Ελαιόλαδο"],
-        steps: [
-          "Αλατίζουμε τις τσιπούρες εσωτερικά και εξωτερικά, βάζουμε λίγη ρίγανη και τις αλείφουμε με ελαιόλαδο.",
-          "Ψήνουμε σε προθερμασμένο φούρνο (ή στο γκριλ) στους 200°C για 20-25 λεπτά.",
-          "Παράλληλα βράζουμε τα καθαρισμένα χόρτα σε μπόλικο αλατισμένο νερό για 12-15 λεπτά και τα στραγγίζουμε.",
-          "Χτυπάμε ελαιόλαδο με χυμό λεμονιού και περιχύνουμε ψάρια και χόρτα."
-        ]
-      },
-      {
-        id: "rec_6",
-        title: "Ρεβίθια λεμονάτα στην κατσαρόλα",
-        category: "Όσπρια",
-        time: "60' μαγείρεμα (με μούλιασμα)",
-        servings: "4 μερίδες",
-        ingredients: ["500γρ ρεβίθια", "1 κρεμμύδι ξερό", "1 λεμόνι (χυμός)", "1 κ.γ. ρίγανη ή δεντρολίβανο", "Ελαιόλαδο"],
-        steps: [
-          "Μουλιάζουμε τα ρεβίθια σε μπόλικο νερό από το προηγούμενο βράδυ και τα ξεπλένουμε.",
-          "Τα βάζουμε στην κατσαρόλα με φρέσκο ζεστό νερό και το ψιλοκομμένο κρεμμύδι, ξαφρίζοντας στην αρχή.",
-          "Σιγοβράζουμε για 45-50 λεπτά μέχρι να μαλακώσουν καλά.",
-          "Προσθέτουμε 5 κ.σ. ελαιόλαδο, αλάτι, πιπέρι, τη ρίγανη και τον χυμό λεμονιού και βράζουμε 5 λεπτά ακόμη να χυλώσουν."
-        ]
-      },
-      {
-        id: "rec_7",
-        title: "Μπιφτέκια φούρνου με ρύζι",
-        category: "Κρεατικά",
-        time: "45' προετοιμασία & ψήσιμο",
-        servings: "4 μερίδες",
-        ingredients: ["600γρ κιμάς ανάμεικτος", "1 κρεμμύδι", "1 αυγό", "2 φέτες ψωμί μπαγιάτικο", "250γρ ρύζι μπασμάτι", "Ρίγανη & δυόσμος", "Ελαιόλαδο"],
-        steps: [
-          "Μουλιάζουμε το ψωμί σε λίγο νερό και το στύβουμε καλά. Τρίβουμε το κρεμμύδι.",
-          "Ζυμώνουμε τον κιμά με το ψωμί, το κρεμμύδι, το αυγό, ρίγανη, δυόσμο, αλάτι, πιπέρι και 2 κ.σ. ελαιόλαδο.",
-          "Πλάθουμε 6-8 μπιφτέκια, τα βάζουμε σε λαδωμένο ταψί και ψήνουμε στους 200°C για 30 λεπτά.",
-          "Βράζουμε το ρύζι μπασμάτι σε αναλογία 1 μέρος ρύζι προς 2 μέρη νερό και σερβίρουμε."
-        ]
-      },
-      {
-        id: "rec_8",
-        title: "Σπανακόρυζο λεμονάτο",
-        category: "Λαδερά",
-        time: "30' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["1 κιλό σπανάκι φρέσκο", "150γρ ρύζι καρολίνα", "4 φρέσκα κρεμμυδάκια", "1/2 ματσάκι άνηθος", "1 λεμόνι (χυμός)", "Ελαιόλαδο"],
-        steps: [
-          "Σοτάρουμε τα ψιλοκομμένα φρέσκα κρεμμυδάκια σε ελαιόλαδο για 2 λεπτά.",
-          "Προσθέτουμε το πλυμένο σπανάκι σε δόσεις και ανακατεύουμε μέχρι να πέσει ο όγκος του.",
-          "Ρίχνουμε το ρύζι, τον ψιλοκομμένο άνηθο, αλάτι, πιπέρι και 2 ποτήρια ζεστό νερό.",
-          "Σιγοβράζουμε για 15-18 λεπτά και στο τέλος σβήνουμε με τον χυμό λεμονιού."
-        ]
-      },
-      {
-        id: "rec_9",
-        title: "Πένες με κοτόπουλο & μανιτάρια",
-        category: "Ζυμαρικά",
-        time: "30' γρήγορο γεύμα",
-        servings: "4 μερίδες",
-        ingredients: ["450γρ φιλέτο κοτόπουλο", "1 πακέτο πένες", "250γρ μανιτάρια λευκά", "1 κρέμα γάλακτος light", "1 σκελίδα σκόρδο", "Ελαιόλαδο", "Τριμμένο τυρί"],
-        steps: [
-          "Κόβουμε το κοτόπουλο σε μπουκιές και τα μανιτάρια σε φέτες.",
-          "Σοτάρουμε το κοτόπουλο σε ελαιόλαδο μέχρι να ροδίσει, προσθέτουμε τα μανιτάρια και το σκόρδο για 4 λεπτά.",
-          "Ρίχνουμε την κρέμα γάλακτος, αλάτι και πιπέρι και αφήνουμε 5 λεπτά να δέσει η σάλτσα.",
-          "Ανακατεύουμε μέσα τις βρασμένες πένες με λίγο από το νερό τους και σερβίρουμε με τριμμένο τυρί."
-        ]
-      },
-      {
-        id: "rec_10",
-        title: "Φασολάκια λαδερά με πατάτες",
-        category: "Λαδερά",
-        time: "45' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["1 κιλό φασολάκια πράσινα", "3 πατάτες", "2 καρότα", "1 συσκ. σάλτσα ντομάτας", "1 κρεμμύδι ξερό", "Μαϊντανός", "Ελαιόλαδο"],
-        steps: [
-          "Καθαρίζουμε τα φασολάκια και κόβουμε τις πατάτες και τα καρότα σε κομμάτια.",
-          "Σοτάρουμε το ψιλοκομμένο κρεμμύδι σε ελαιόλαδο, προσθέτουμε τα λαχανικά και ανακατεύουμε 3 λεπτά.",
-          "Ρίχνουμε τη σάλτσα ντομάτας, ψιλοκομμένο μαϊντανό, αλάτι, πιπέρι και 1 ποτήρι ζεστό νερό.",
-          "Σιγοβράζουμε για 35 λεπτά μέχρι να μαλακώσουν και να μείνουν με το λαδάκι τους."
-        ]
-      },
-      {
-        id: "rec_11",
-        title: "Μπριάμ φούρνου παραδοσιακό",
-        category: "Λαδερά",
-        time: "60' προετοιμασία & ψήσιμο",
-        servings: "4 μερίδες",
-        ingredients: ["3 κολοκυθάκια", "2 μελιτζάνες", "3 πατάτες", "2 ώριμες ντομάτες", "1 κρεμμύδι", "Μαϊντανός", "Ελαιόλαδο"],
-        steps: [
-          "Προθερμαίνουμε τον φούρνο στους 190°C. Κόβουμε όλα τα λαχανικά σε χοντρές ροδέλες ή κύβους.",
-          "Τα απλώνουμε σε μεγάλο ταψί μαζί με τριμμένη ντομάτα, ψιλοκομμένο μαϊντανό, αλάτι και πιπέρι.",
-          "Περιχύνουμε με 1/2 φλιτζάνι ελαιόλαδο και 1/2 ποτήρι νερό και ανακατεύουμε καλά με τα χέρια.",
-          "Ψήνουμε για 55-60 λεπτά μέχρι να ροδίσουν και να μελώσουν."
-        ]
-      },
-      {
-        id: "rec_12",
-        title: "Ομελέτα φούρνου με λαχανικά & φέτα",
-        category: "Ελαφριά",
-        time: "25' γρήγορο γεύμα",
-        servings: "2-3 μερίδες",
-        ingredients: ["6 αυγά", "1 πιπεριά", "1 ντομάτα", "150γρ τυρί φέτα", "3 κ.σ. γάλα", "Ελαιόλαδο"],
-        steps: [
-          "Προθερμαίνουμε τον φούρνο στους 180°C και λαδώνουμε ένα μέτριο πυρέξ.",
-          "Χτυπάμε τα αυγά με το γάλα, λίγο αλάτι και φρεσκοτριμμένο πιπέρι.",
-          "Ρίχνουμε ψιλοκομμένη πιπεριά, ντομάτα χωρίς τους σπόρους και θρυμματισμένη φέτα.",
-          "Ψήνουμε για 18-20 λεπτά μέχρι να φουσκώσει και να ροδίσει ελαφρά."
-        ]
-      },
-      {
-        id: "rec_13",
-        title: "Τραχανάς ξινός με φέτα",
-        category: "Ελαφριά",
-        time: "15' πολύ γρήγορο",
-        servings: "2 μερίδες",
-        ingredients: ["1 φλιτζάνι τραχανάς", "150γρ τυρί φέτα", "1 κ.σ. ελαιόλαδο ή βούτυρο", "Πιπέρι"],
-        steps: [
-          "Βάζουμε 4 φλιτζάνια νερό με λίγο αλάτι να βράσουν σε κατσαρολάκι.",
-          "Ρίχνουμε τον τραχανά ανακατεύοντας συνεχώς με σύρμα για να μην σβολιάσει.",
-          "Σιγοβράζουμε 10-12 λεπτά μέχρι να χυλώσει όσο μας αρέσει.",
-          "Σερβίρουμε ζεστό με ελαιόλαδο, θρυμματισμένη φέτα και φρεσκοτριμμένο πιπέρι."
-        ]
-      },
-      {
-        id: "rec_14",
-        title: "Γιουβαρλάκια αυγολέμονο",
-        category: "Κρεατικά",
-        time: "50' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["500γρ κιμάς μοσχαρίσιος", "80γρ ρύζι καρολίνα", "1 κρεμμύδι", "2 αυγά", "1 λεμόνι (χυμός)", "Άνηθος", "Ελαιόλαδο"],
-        steps: [
-          "Ζυμώνουμε τον κιμά με τριμμένο κρεμμύδι, το ρύζι, ψιλοκομμένο άνηθο, 1 ασπράδι αυγού, αλάτι, πιπέρι και 2 κ.σ. ελαιόλαδο.",
-          "Πλάθουμε μπαλάκια στο μέγεθος καρυδιού και τα ρίχνουμε σε 1,5 λίτρο νερό που βράζει απαλά.",
-          "Σιγοβράζουμε για 30 λεπτά. Χτυπάμε 1 ολόκληρο αυγό + 1 κρόκο με τον χυμό λεμονιού.",
-          "Παίρνουμε σταδιακά ζεστό ζωμό από την κατσαρόλα, τον ρίχνουμε στο αυγολέμονο ανακατεύοντας και επιστρέφουμε στην κατσαρόλα."
-        ]
-      },
-      {
-        id: "rec_15",
-        title: "Παπουτσάκια μελιτζάνες στον φούρνο",
-        category: "Κρεατικά",
-        time: "70' προετοιμασία & ψήσιμο",
-        servings: "4 μερίδες",
-        ingredients: ["4 μελιτζάνες φλάσκες", "400γρ κιμάς μοσχαρίσιος", "1 συσκ. σάλτσα ντομάτας", "1 κρεμμύδι", "Τριμμένο τυρί", "Ελαιόλαδο"],
-        steps: [
-          "Κόβουμε τις μελιτζάνες στη μέση κατά μήκος, τις χαράζουμε, αλείφουμε με ελαιόλαδο και ψήνουμε στους 200°C για 25 λεπτά να μαλακώσουν.",
-          "Ετοιμάζουμε τον κιμά σοτάροντας κρεμμύδι, κιμά και σάλτσα ντομάτας για 20 λεπτά.",
-          "Πιέζουμε ελαφρά την ψίχα της μελιτζάνας με κουτάλι, γεμίζουμε με κιμά και πασπαλίζουμε με τριμμένο τυρί.",
-          "Ψήνουμε άλλα 15 λεπτά μέχρι να λιώσει και να ροδίσει το τυρί."
-        ]
-      },
-      {
-        id: "rec_16",
-        title: "Κριθαρότο λαχανικών",
-        category: "Ζυμαρικά",
-        time: "30' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["350γρ κριθαράκι μέτριο", "1 κολοκυθάκι", "1 καρότο", "1 πιπεριά", "1 συσκ. σάλτσα ντομάτας", "Ελαιόλαδο", "Τριμμένο τυρί"],
-        steps: [
-          "Κόβουμε το κολοκυθάκι, το καρότο και την πιπεριά σε μικρά κυβάκια.",
-          "Σοτάρουμε τα λαχανικά σε ελαιόλαδο για 3 λεπτά, ρίχνουμε το κριθαράκι και ανακατεύουμε να γυαλίσει.",
-          "Προσθέτουμε τη σάλτσα ντομάτας, αλάτι, πιπέρι και σταδιακά 3,5 φλιτζάνια ζεστό νερό, ανακατεύοντας συχνά.",
-          "Σε 16-18 λεπτά που θα χυλώσει, αποσύρουμε και σερβίρουμε με τριμμένο τυρί."
-        ]
-      },
-      {
-        id: "rec_17",
-        title: "Τονοσαλάτα με ζυμαρικά",
-        category: "Ζυμαρικά",
-        time: "20' γρήγορο γεύμα",
-        servings: "3 μερίδες",
-        ingredients: ["300γρ βίδες ή πένες", "2 κονσέρβες τόνος σε νερό", "Καλαμπόκι", "1 αγγούρι", "Ντοματίνια", "2 κ.σ. μαγιονέζα ή γιαούρτι", "Ελαιόλαδο"],
-        steps: [
-          "Βράζουμε τα ζυμαρικά, τα κρυώνουμε κάτω από τρεχούμενο νερό και τα στραγγίζουμε καλά.",
-          "Σε μεγάλο μπολ ανακατεύουμε τον στραγγισμένο τόνο, καλαμπόκι, ψιλοκομμένο αγγούρι και ντοματίνια.",
-          "Προσθέτουμε τα ζυμαρικά, 2 κ.σ. γιαούρτι ή μαγιονέζα, 1 κ.σ. ελαιόλαδο, αλάτι και πιπέρι."
-        ]
-      },
-      {
-        id: "rec_18",
-        title: "Κεφτεδάκια κοκκινιστά με πουρέ",
-        category: "Κρεατικά",
-        time: "50' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["500γρ κιμάς μοσχαρίσιος", "1 συσκ. σάλτσα ντομάτας", "1 κρεμμύδι", "1 αυγό", "1 κιλό πατάτες", "Φρέσκο Γάλα 1L", "Ελαιόλαδο"],
-        steps: [
-          "Ζυμώνουμε τον κιμά με τριμμένο κρεμμύδι, αυγό, δυόσμο, αλάτι και πιπέρι, πλάθουμε κεφτεδάκια και τα ψήνουμε στον φούρνο 15 λεπτά.",
-          "Ζεσταίνουμε τη σάλτσα ντομάτας σε κατσαρόλα, ρίχνουμε μέσα τα κεφτεδάκια και σιγοβράζουμε 15 λεπτά.",
-          "Βράζουμε τις πατάτες, τις λιώνουμε και ανακατεύουμε με ζεστό γάλα, ελαιόλαδο και αλάτι για βελούδινο πουρέ."
-        ]
-      },
-      {
-        id: "rec_19",
-        title: "Αρακάς λαδερός με πατάτες & άνηθο",
-        category: "Λαδερά",
-        time: "40' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["750γρ αρακάς", "3 πατάτες", "2 καρότα", "1 κρεμμύδι", "1/2 ματσάκι άνηθος", "1 συσκ. σάλτσα ντομάτας", "Ελαιόλαδο"],
-        steps: [
-          "Σοτάρουμε το ψιλοκομμένο κρεμμύδι με ελαιόλαδο στην κατσαρόλα.",
-          "Προσθέτουμε τον αρακά, τις πατάτες και τα καρότα κομμένα σε κύβους και ανακατεύουμε 2-3 λεπτά.",
-          "Ρίχνουμε τη σάλτσα ντομάτας, ψιλοκομμένο άνηθο, αλάτι, πιπέρι και 1 ποτήρι ζεστό νερό.",
-          "Σιγοβράζουμε για 30 λεπτά μέχρι να μαλακώσουν όλα τα λαχανικά."
-        ]
-      },
-      {
-        id: "rec_20",
-        title: "Κοτόσουπα αυγολέμονο",
-        category: "Κρεατικά",
-        time: "55' προετοιμασία & μαγείρεμα",
-        servings: "4 μερίδες",
-        ingredients: ["800γρ κοτόπουλο (στήθος ή μπούτι)", "120γρ ρύζι καρολίνα", "2 καρότα", "1 κλωνάρι σέλινο", "2 αυγά", "1 λεμόνι (χυμός)", "Ελαιόλαδο"],
-        steps: [
-          "Βράζουμε το κοτόπουλο με τα καρότα και το σέλινο σε 2 λίτρα νερό για 40 λεπτά. Βγάζουμε το κοτόπουλο και το ξεψαχνίζουμε.",
-          "Σουρώνουμε τον ζωμό, τον ξαναβάζουμε να βράσει και ρίχνουμε το ρύζι για 15 λεπτά.",
-          "Ετοιμάζουμε το αυγολέμονο χτυπώντας τα αυγά με το λεμόνι, προσθέτουμε σταδιακά ζωμό και το ρίχνουμε στη σούπα μαζί με το κοτόπουλο."
-        ]
-      },
-      {
-        id: "rec_21",
-        title: "Ντάκος κρητικός με ντομάτα & φέτα",
-        category: "Ελαφριά",
-        time: "10' χωρίς μαγείρεμα",
-        servings: "2 μερίδες",
-        ingredients: ["4 παξιμάδια κρίθινα", "3 ώριμες ντομάτες", "200γρ τυρί φέτα", "Ελιές", "Ρίγανη", "Ελαιόλαδο"],
-        steps: [
-          "Βρέχουμε ελαφρά τα κρίθινα παξιμάδια με λίγο νερό και τα ραντίζουμε με ελαιόλαδο.",
-          "Τρίβουμε τις ντομάτες στον τρίφτη, προσθέτουμε λίγο αλάτι και μοιράζουμε πάνω στα παξιμάδια.",
-          "Συμπληρώνουμε θρυμματισμένη φέτα, ελιές, ρίγανη και μπόλικο έξτρα παρθένο ελαιόλαδο."
-        ]
-      },
-      {
-        id: "rec_22",
-        title: "Σαλάτα του σεφ με αυγό & τοστ",
-        category: "Ελαφριά",
-        time: "15' χωρίς μαγείρεμα",
-        servings: "2 μερίδες",
-        ingredients: ["1 μαρούλι", "1 αγγούρι", "2 αυγά βραστά", "Τυρί κίτρινο & γαλοπούλα", "Ντοματίνια", "Ψωμί του τοστ"],
-        steps: [
-          "Κόβουμε το μαρούλι, το αγγούρι και τα ντοματίνια σε μεγάλη σαλατιέρα.",
-          "Προσθέτουμε λωρίδες γαλοπούλας, κίτρινο τυρί και τα βραστά αυγά κομμένα στα τέσσερα.",
-          "Περιχύνουμε με ελαιόλαδο και λεμόνι ή dressing γιαουρτιού και συνοδεύουμε με φρυγανισμένο τοστ."
-        ]
-      }
+      { name: "Φρέσκο Γάλα", category: "🥛 Γαλακτοκομικά", emoji: "🥛" },
+      { name: "Αυγά", category: "🥛 Γαλακτοκομικά", emoji: "🥚" },
+      { name: "Ψωμί", category: "🥖 Αρτοποιείο", emoji: "🍞" },
+      { name: "Ντομάτες", category: "🥬 Φρούτα & Λαχανικά", emoji: "🍅" },
+      { name: "Πατάτες", category: "🥬 Φρούτα & Λαχανικά", emoji: "🥔" },
+      { name: "Ελαιόλαδο", category: "🥫 Τρόφιμα", emoji: "🫒" },
+      { name: "Μακαρόνια", category: "🥫 Τρόφιμα", emoji: "🍝" },
+      { name: "Φέτα", category: "🥛 Γαλακτοκομικά", emoji: "🧀" },
+      { name: "Κοτόπουλο", category: "🥩 Κρέας & Ψάρια", emoji: "🍗" },
+      { name: "Χαρτί υγείας", category: "🧻 Προσωπική φροντίδα", emoji: "🧻" }
     ];
 
     const DEFAULT_CATALOG = [
-      { id: "c1", name: "Φρέσκο Γάλα 1L", category: "🥛 Γαλακτοκομικά", prices: { "Σκλαβενίτης": 1.38, "ΑΒ Βασιλόπουλος": 1.24, "Μασούτης": 1.32, "Lidl": 1.19 } },
-      { id: "c2", name: "Ελαιόλαδο Εξαιρετικό Παρθένο 1L", category: "🥫 Τρόφιμα", prices: { "Σκλαβενίτης": 10.90, "ΑΒ Βασιλόπουλος": 11.40, "Μασούτης": 10.45, "My market": 10.75 } },
-      { id: "c3", name: "Ντομάτες (1 κιλό)", category: "🥬 Φρούτα & Λαχανικά", prices: { "Σκλαβενίτης": 1.85, "ΑΒ Βασιλόπουλος": 1.95, "Μασούτης": 1.69, "Lidl": 1.59 } },
-      { id: "c4", name: "Πατάτες (1 κιλό)", category: "🥬 Φρούτα & Λαχανικά", prices: { "Σκλαβενίτης": 1.15, "ΑΒ Βασιλόπουλος": 1.25, "Μασούτης": 1.09, "Lidl": 0.99 } },
-      { id: "c5", name: "Τυρί φέτα 400γρ", category: "🥛 Γαλακτοκομικά", prices: { "Σκλαβενίτης": 4.85, "ΑΒ Βασιλόπουλος": 5.10, "Μασούτης": 4.70, "Lidl": 4.49 } },
-      { id: "c6", name: "Φακές 500γρ", category: "🥫 Τρόφιμα", prices: { "Σκλαβενίτης": 1.65, "ΑΒ Βασιλόπουλος": 1.78, "Μασούτης": 1.59, "My market": 1.62 } },
-      { id: "c7", name: "Μακαρόνια Νο6 500γρ", category: "🥫 Τρόφιμα", prices: { "Σκλαβενίτης": 1.12, "ΑΒ Βασιλόπουλος": 1.18, "Μασούτης": 1.05, "Lidl": 0.89 } },
-      { id: "c8", name: "Αυγά (6άδα)", category: "🥛 Γαλακτοκομικά", prices: { "Σκλαβενίτης": 2.20, "ΑΒ Βασιλόπουλος": 2.35, "Μασούτης": 2.15, "Lidl": 1.99 } },
-      { id: "c9", name: "Υγρό Πιάτων", category: "🧴 Καθαριστικά", prices: { "Σκλαβενίτης": 2.15, "ΑΒ Βασιλόπουλος": 1.98, "Μασούτης": 2.10, "My market": 2.05 } },
-      { id: "c10", name: "Χαρτί υγείας (8 ρολά)", category: "🧻 Προσωπική φροντίδα", prices: { "Σκλαβενίτης": 3.45, "ΑΒ Βασιλόπουλος": 3.60, "Μασούτης": 3.29, "Lidl": 3.15 } },
-      { id: "c11", name: "Ψωμί του Τοστ", category: "🥖 Αρτοποιείο", prices: { "Σκλαβενίτης": 1.75, "ΑΒ Βασιλόπουλος": 1.80, "Μασούτης": 1.65, "Lidl": 1.49 } },
-      { id: "c12", name: "Κοτόπουλο φιλέτο (1 κιλό)", category: "🥩 Κρέας & Ψάρια", prices: { "Σκλαβενίτης": 7.90, "ΑΒ Βασιλόπουλος": 8.20, "Μασούτης": 7.65, "Lidl": 7.49 } }
+      { id: "c1", name: "Φρέσκο Γάλα 1L", category: "🥛 Γαλακτοκομικά", emoji: "🥛", prices: { "Σκλαβενίτης": 1.38, "ΑΒ Βασιλόπουλος": 1.24, "Μασούτης": 1.32 } },
+      { id: "c2", name: "Ελαιόλαδο Εξ. Παρθένο 1L", category: "🥫 Τρόφιμα", emoji: "🫒", prices: { "Σκλαβενίτης": 10.90, "ΑΒ Βασιλόπουλος": 11.40, "Μασούτης": 10.45 } },
+      { id: "c3", name: "Ντομάτες (1 κιλό)", category: "🥬 Φρούτα & Λαχανικά", emoji: "🍅", prices: { "Σκλαβενίτης": 1.85, "ΑΒ Βασιλόπουλος": 1.95, "Μασούτης": 1.69 } },
+      { id: "c4", name: "Φέτα ΠΟΠ (400γρ)", category: "🥛 Γαλακτοκομικά", emoji: "🧀", prices: { "Σκλαβενίτης": 4.45, "ΑΒ Βασιλόπουλος": 4.20, "Μασούτης": 4.35 } },
+      { id: "c5", name: "Ψωμί του Τοστ", category: "🥖 Αρτοποιείο", emoji: "🍞", prices: { "Σκλαβενίτης": 1.75, "ΑΒ Βασιλόπουλος": 1.80, "Μασούτης": 1.65 } },
+      { id: "c6", name: "Κοτόπουλο Φιλέτο Στήθος", category: "🥩 Κρέας & Ψάρια", emoji: "🍗", prices: { "Σκλαβενίτης": 7.90, "ΑΒ Βασιλόπουλος": 8.20, "Μασούτης": 7.65 } },
+      { id: "c7", name: "Υγρό Πιάτων", category: "🧴 Καθαριστικά", emoji: "🫧", prices: { "Σκλαβενίτης": 2.15, "ΑΒ Βασιλόπουλος": 1.98, "Μασούτης": 2.10 } },
+      { id: "c8", name: "Μακαρόνια Νο 6 (500γρ)", category: "🥫 Τρόφιμα", emoji: "🍝", prices: { "Σκλαβενίτης": 0.95, "ΑΒ Βασιλόπουλος": 1.05, "Μασούτης": 0.89 } },
+      { id: "c9", name: "Αυγά Αχυρώνα (6άδα)", category: "🥛 Γαλακτοκομικά", emoji: "🥚", prices: { "Σκλαβενίτης": 2.25, "ΑΒ Βασιλόπουλος": 2.10, "Μασούτης": 2.18 } },
+      { id: "c10", name: "Πατάτες (1 κιλό)", category: "🥬 Φρούτα & Λαχανικά", emoji: "🥔", prices: { "Σκλαβενίτης": 1.15, "ΑΒ Βασιλόπουλος": 1.25, "Μασούτης": 1.08 } }
     ];
 
-    function buildDistinctWeeklyPlan(allRecipes, previousPlan = []) {
-      const prevIds = new Set();
-      previousPlan.forEach((d) => {
-        if (d.lunchId) prevIds.add(d.lunchId);
-        if (d.dinnerId) prevIds.add(d.dinnerId);
-      });
-
-      const mainPool = allRecipes.filter((r) => r.category !== "Ελαφριά");
-      const lightPool = allRecipes.filter((r) => r.category === "Ελαφριά");
-
-      function pickDistinct(pool, count, excludeSet) {
-        const available = pool.filter((r) => !excludeSet.has(r.id));
-        const fresh = available.filter((r) => !prevIds.has(r.id)).sort(() => Math.random() - 0.5);
-        const repeatedFromLastWeek = available.filter((r) => prevIds.has(r.id)).sort(() => Math.random() - 0.5);
-        return [...fresh, ...repeatedFromLastWeek].slice(0, count);
+    const DEFAULT_RECIPES = [
+      {
+        id: "r1", title: "Φακές σούπα παραδοσιακή", category: "Όσπρια", emoji: "🥣", bg: "#f4e3d2",
+        time: "45' • 4 μερίδες",
+        ingredients: ["350γρ φακές", "1 κρεμμύδι", "2 καρότα", "100ml ελαιόλαδο", "2 σκελίδες σκόρδο", "1 φύλλο δάφνης", "Αλάτι & ξύδι"],
+        steps: [
+          "Ξεπλένουμε καλά τις φακές και τις βάζουμε σε κατσαρόλα με νερό που τις σκεπάζει, φέρνουμε σε βρασμό για 5 λεπτά και σουρώνουμε.",
+          "Ξαναβάζουμε τις φακές στην κατσαρόλα με φρέσκο νερό, το κρεμμύδι ολόκληρο ή ψιλοκομμένο, τα καρότα σε ροδέλες, το σκόρδο και τη δάφνη.",
+          "Σιγοβράζουμε για περίπου 30–35 λεπτά μέχρι να μαλακώσουν οι φακές και να χυλώσει ο ζωμός.",
+          "Προσθέτουμε το ελαιόλαδο και το αλάτι στα τελευταία λεπτά και σερβίρουμε με λίγες σταγόνες ξύδι."
+        ]
+      },
+      {
+        id: "r2", title: "Ρεβίθια λεμονάτα κατσαρόλας", category: "Όσπρια", emoji: "🫘", bg: "#f7ebd9",
+        time: "50' • 4 μερίδες",
+        ingredients: ["400γρ ρεβίθια", "1 κρεμμύδι", "120ml ελαιόλαδο", "2 λεμόνια", "1 κ.γ. ρίγανη", "Αλάτι & πιπέρι"],
+        steps: [
+          "Αν χρησιμοποιούμε ωμά ρεβίθια, τα έχουμε μουλιάσει από το προηγούμενο βράδυ και τα βράζουμε μέχρι να μαλακώσουν (ή χρησιμοποιούμε έτοιμα βρασμένα).",
+          "Σοτάρουμε ελαφρά το ψιλοκομμένο κρεμμύδι στο ελαιόλαδο και προσθέτουμε τα ρεβίθια με λίγο ζωμό ή ζεστό νερό.",
+          "Ρίχνουμε το χυμό λεμονιού, αλάτι, πιπέρι και ρίγανη και σιγομαγειρεύουμε για 15–20 λεπτά να δέσει η σάλτσα."
+        ]
+      },
+      {
+        id: "r3", title: "Φασολάκια λαδερά με πατάτες", category: "Λαδερά", emoji: "🫛", bg: "#e4f2e7",
+        time: "55' • 4 μερίδες",
+        ingredients: ["600γρ φασολάκια", "3 πατάτες", "2 ώριμες ντομάτες", "1 κρεμμύδι", "120ml ελαιόλαδο", "Αλάτι & πιπέρι"],
+        steps: [
+          "Καθαρίζουμε τα φασολάκια και κόβουμε τις πατάτες κυδωνάτες.",
+          "Σε φαρδιά κατσαρόλα σοτάρουμε το κρεμμύδι με το ελαιόλαδο, προσθέτουμε τα φασολάκια, τις πατάτες και την τριμμένη ντομάτα.",
+          "Προσθέτουμε μισό ποτήρι ζεστό νερό, αλάτι και πιπέρι και μαγειρεύουμε σε μέτρια φωτιά μέχρι να μαλακώσουν τα λαχανικά και να μείνει με το λάδι του."
+        ]
+      },
+      {
+        id: "r4", title: "Μπριάμ φούρνου με λαχανικά", category: "Λαδερά", emoji: "🍆", bg: "#efe2f3",
+        time: "60' • 4 μερίδες",
+        ingredients: ["2 κολοκυθάκια", "2 μελιτζάνες", "3 πατάτες", "2 ντομάτες", "1 κρεμμύδι", "120ml ελαιόλαδο", "Μαϊντανός & ρίγανη"],
+        steps: [
+          "Κόβουμε σε φέτες ή ροδέλες τα κολοκυθάκια, τις μελιτζάνες, τις πατάτες, τις ντομάτες και το κρεμμύδι.",
+          "Τα απλώνουμε σε ταψί, πασπαλίζουμε με αλάτι, πιπέρι, ρίγανη και ψιλοκομμένο μαϊντανό και περιχύνουμε με ελαιόλαδο και λίγο νερό.",
+          "Ψήνουμε στους 180°C για περίπου 50–60 λεπτά μέχρι να ροδίσουν και να μελώσουν."
+        ]
+      },
+      {
+        id: "r5", title: "Σπανακόρυζο λεμονάτο", category: "Λαδερά", emoji: "🥬", bg: "#e2f1e5",
+        time: "40' • 4 μερίδες",
+        ingredients: ["700γρ σπανάκι", "150γρ ρύζι γλασέ ή καρολίνα", "1 φρέσκο κρεμμυδάκι & άνηθος", "100ml ελαιόλαδο", "1 λεμόνι", "Αλάτι & πιπέρι"],
+        steps: [
+          "Πλένουμε πολύ καλά το σπανάκι και το χοντροκόβουμε.",
+          "Μαραίνουμε το σπανάκι και το κρεμμυδάκι με λίγο ελαιόλαδο στην κατσαρόλα, προσθέτουμε ζεστό νερό, αλάτι και πιπέρι.",
+          "Ρίχνουμε το ρύζι και βράζουμε σε χαμηλή φωτιά για 15–18 λεπτά ανακατεύοντας κατά διαστήματα. Στο τέλος προσθέτουμε άνηθο, το υπόλοιπο λάδι και λεμόνι."
+        ]
+      },
+      {
+        id: "r6", title: "Γεμιστά παραδοσιακά", category: "Λαδερά", emoji: "🍅", bg: "#fce3dc",
+        time: "75' • 4 μερίδες",
+        ingredients: ["4 ντομάτες & 4 πιπεριές", "200γρ ρύζι", "1 κρεμμύδι", "150ml ελαιόλαδο", "Δυόσμος & μαϊντανός", "Αλάτι, πιπέρι & λίγη ζάχαρη"],
+        steps: [
+          "Κόβουμε τα καπάκια από τις ντομάτες και τις πιπεριές και αδειάζουμε προσεκτικά την ψίχα τους.",
+          "Πολτοποιούμε την ψίχα της ντομάτας και τη σοτάρουμε με κρεμμύδι, ελαιόλαδο, μυρωδικά, αλάτι, πιπέρι και το ρύζι για λίγα λεπτά.",
+          "Γεμίζουμε τα λαχανικά μέχρι τα 3/4, σκεπάζουμε με τα καπάκια, βάζουμε σε ταψί με λίγο νερό και λάδι και ψήνουμε στους 180°C για περίπου 60 λεπτά."
+        ]
+      },
+      {
+        id: "r7", title: "Κοτόπουλο λεμονάτο με πατάτες φούρνου", category: "Κρεατικά", emoji: "🍗", bg: "#f9e6cf",
+        time: "65' • 4 μερίδες",
+        ingredients: ["1 κιλό κοτόπουλο κομμένο σε μερίδες", "5 πατάτες", "2 λεμόνια", "120ml ελαιόλαδο", "1 κ.γ. ρίγανη", "Αλάτι & πιπέρι"],
+        steps: [
+          "Κόβουμε τις πατάτες κυδωνάτες και τις βάζουμε στο ταψί μαζί με τα κομμάτια κοτόπουλου.",
+          "Χτυπάμε σε μπολ το χυμό λεμονιού, το ελαιόλαδο, τη ρίγανη, αλάτι και πιπέρι και περιχύνουμε το φαγητό προσθέτοντας μισό ποτήρι νερό.",
+          "Ψήνουμε σε προθερμασμένο φούρνο στους 190°C για περίπου 60 λεπτά, γυρίζοντας το κοτόπουλο και περιχύνοντάς το με τη σάλτσα του."
+        ]
+      },
+      {
+        id: "r8", title: "Μπιφτέκια σχάρας ή φούρνου", category: "Κρεατικά", emoji: "🥩", bg: "#f5dcd4",
+        time: "35' • 4 μερίδες",
+        ingredients: ["700γρ κιμάς μοσχαρίσιος", "1 κρεμμύδι τριμμένο", "1 αυγό", "2 φέτες ψωμί μουλιασμένο", "Δυόσμος ή ρίγανη", "Ελαιόλαδο, αλάτι & πιπέρι"],
+        steps: [
+          "Ζυμώνουμε καλά τον κιμά με το τριμμένο κρεμμύδι, το αυγό, το στυμμένο ψωμί, τα μυρωδικά, αλάτι, πιπέρι και 2 κ.σ. ελαιόλαδο.",
+          "Πλάθουμε μπιφτέκια μέτριου πάχους ώστε να ψηθούν ζουμερά στο εσωτερικό.",
+          "Ψήνουμε σε λαδωμένο ταψί στους 200°C για 25–30 λεπτά ή σε γκριλιέρα."
+        ]
+      },
+      {
+        id: "r9", title: "Γιουβαρλάκια αυγολέμονο", category: "Κρεατικά", emoji: "🍲", bg: "#f7ebd9",
+        time: "50' • 4 μερίδες",
+        ingredients: ["500γρ κιμάς", "100γρ ρύζι γλασέ", "1 κρεμμύδι", "1 αυγό & 1 λεμόνι (για το αυγολέμονο)", "Άνηθος ή μαϊντανός", "Ελαιόλαδο, αλάτι & πιπέρι"],
+        steps: [
+          "Ανακατεύουμε τον κιμά με το ρύζι, το ψιλοκομμένο κρεμμύδι, τα μυρωδικά, αλάτι, πιπέρι και λίγο λάδι και πλάθουμε μικρά μπαλάκια.",
+          "Βράζουμε νερό με λίγο ελαιόλαδο και αλάτι στην κατσαρόλα και ρίχνουμε προσεκτικά τα γιουβαρλάκια να σιγοβράσουν για περίπου 25–30 λεπτά.",
+          "Χτυπάμε το αυγό με το λεμόνι, προσθέτουμε κουτάλα-κουτάλα ζεστό ζωμό για να μη κόψει και περιχύνουμε την κατσαρόλα κουνώντας την απαλά."
+        ]
+      },
+      {
+        id: "r10", title: "Κοτόπουλο κοκκινιστό με χυλοπίτες", category: "Ζυμαρικά", emoji: "🍝", bg: "#fae2d4",
+        time: "45' • 4 μερίδες",
+        ingredients: ["600γρ κοτόπουλο σε κομμάτια", "350γρ χυλοπίτες", "400γρ σάλτσα ή τριμμένη ντομάτα", "1 κρεμμύδι", "Ελαιόλαδο, αλάτι & πιπέρι"],
+        steps: [
+          "Σοτάρουμε το κοτόπουλο και το κρεμμύδι σε ελαιόλαδο, προσθέτουμε τη ντομάτα, αλάτι, πιπέρι και λίγο ζεστό νερό.",
+          "Σιγομαγειρεύουμε το κοτόπουλο μέχρι να μαλακώσει σχεδόν εντελώς.",
+          "Ρίχνουμε τις χυλοπίτες μέσα στη σάλτσα (προσθέτοντας ζεστό νερό αν χρειάζεται) και βράζουμε μέχρι να πιουν τα υγρά και να χυλώσουν."
+        ]
+      },
+      {
+        id: "r11", title: "Μακαρόνια με σάλτσα κιμά", category: "Ζυμαρικά", emoji: "🍜", bg: "#fce0d8",
+        time: "40' • 4 μερίδες",
+        ingredients: ["500γρ μακαρόνια", "500γρ κιμάς", "400γρ τριμμένη ντομάτα", "1 κρεμμύδι & 1 σκελίδα σκόρδο", "Ελαιόλαδο, δάφνη, αλάτι & πιπέρι"],
+        steps: [
+          "Σοτάρουμε το κρεμμύδι και το σκόρδο σε ελαιόλαδο, προσθέτουμε τον κιμά και τον καβουρδίζουμε μέχρι να αλλάξει χρώμα.",
+          "Ρίχνουμε τη ντομάτα, τη δάφνη, αλάτι, πιπέρι και λίγο νερό και σιγοβράζουμε για 25 λεπτά μέχρι να δέσει η σάλτσα.",
+          "Βράζουμε τα μακαρόνια σε αλατισμένο νερό σύμφωνα με τις οδηγίες, σουρώνουμε και σερβίρουμε με τη σάλτσα."
+        ]
+      },
+      {
+        id: "r12", title: "Πένες με σάλτσα ντομάτας, βασιλικό & φέτα", category: "Ζυμαρικά", emoji: "🧀", bg: "#f9e7d8",
+        time: "25' • 4 μερίδες",
+        ingredients: ["400γρ πένες", "400γρ ντομάτα κονκασέ ή τριμμένη", "150γρ φέτα", "Φύλλα φρέσκου βασιλικού", "Ελαιόλαδο, αλάτι & πιπέρι"],
+        steps: [
+          "Βράζουμε τις πένες σε άφθονο αλατισμένο νερό al dente.",
+          "Σε τηγάνι ζεσταίνουμε ελαιόλαδο με τη ντομάτα, αλάτι και πιπέρι για 10–12 λεπτά.",
+          "Ανακατεύουμε τα ζυμαρικά με τη σάλτσα, προσθέτουμε θρυμματισμένη φέτα και φρέσκο βασιλικό και σερβίρουμε αμέσως."
+        ]
+      },
+      {
+        id: "r13", title: "Ψάρι φούρνου λαδολέμονο", category: "Ψάρια", emoji: "🐟", bg: "#dceef8",
+        time: "35' • 4 μερίδες",
+        ingredients: ["4 φιλέτα ή μερίδες ψάρι (π.χ. τσιπούρα/λαβράκι/μπακαλιάρος)", "2 λεμόνια", "100ml ελαιόλαδο", "Μαϊντανός ή ρίγανη", "Αλάτι & πιπέρι"],
+        steps: [
+          "Αλατοπιπερώνουμε το ψάρι και το τοποθετούμε σε λαδωμένο πυρέξ ή ταψί.",
+          "Χτυπάμε το ελαιόλαδο με το χυμό λεμονιού και ψιλοκομμένο μαϊντανό και περιχύνουμε το ψάρι.",
+          "Ψήνουμε στους 180–190°C για 20–25 λεπτά (ανάλογα το πάχος) ώστε να παραμείνει ζουμερό."
+        ]
+      },
+      {
+        id: "r14", title: "Τόνος σαλάτα με φασόλια ή καλαμπόκι & αυγό", category: "Ψάρια", emoji: "🥗", bg: "#e1f2ec",
+        time: "15' • 2–3 μερίδες",
+        ingredients: ["2 κονσέρβες τόνος σε νερό ή λάδι", "2 βραστά αυγά", "150γρ καλαμπόκι ή φασόλια", "Μαρούλι ή ντοματίνια", "Ελαιόλαδο, λεμόνι & αλάτι"],
+        steps: [
+          "Στραγγίζουμε τον τόνο και το καλαμπόκι και κόβουμε τα βραστά αυγά και τα λαχανικά.",
+          "Ανακατεύουμε όλα τα υλικά σε μεγάλο μπολ.",
+          "Περιχύνουμε με ελαιόλαδο, χυμό λεμονιού και αλάτι λίγο πριν το σερβίρισμα."
+        ]
+      },
+      {
+        id: "r15", title: "Ομελέτα φούρνου με λαχανικά & τυρί", category: "Ελαφριά", emoji: "🍳", bg: "#fef0c7",
+        time: "25' • 3–4 μερίδες",
+        ingredients: ["6 αυγά", "150γρ τυρί που λιώνει ή φέτα", "1 πιπεριά & 1 ντομάτα", "Λίγο γάλα (2 κ.σ.)", "Ελαιόλαδο, αλάτι & πιπέρι"],
+        steps: [
+          "Κόβουμε σε μικρά κυβάκια την πιπεριά και τη ντομάτα και τα σοτάρουμε ελαφρά με λίγο λάδι.",
+          "Χτυπάμε τα αυγά με το γάλα, αλάτι, πιπέρι και το τριμμένο τυρί και τα ρίχνουμε πάνω από τα λαχανικά σε μικρό ταψάκι.",
+          "Ψήνουμε στους 180°C για περίπου 15–18 λεπτά μέχρι να φουσκώσει και να ροδίσει."
+        ]
+      },
+      {
+        id: "r16", title: "Χωριάτικη σαλάτα με παξιμάδι & φέτα", category: "Ελαφριά", emoji: "🥗", bg: "#e8f3e3",
+        time: "10' • 2–3 μερίδες",
+        ingredients: ["3 ντομάτες", "1 αγγούρι", "1 κρεμμύδι", "150γρ φέτα", "Ελιές & ρίγανη", "Ελαιόλαδο & αλάτι"],
+        steps: [
+          "Κόβουμε τις ντομάτες, το αγγούρι και το κρεμμύδι σε κομμάτια και τα βάζουμε σε σαλατιέρα.",
+          "Προσθέτουμε τις ελιές, τη φέτα σε κομμάτι ή θρυμματισμένη και πασπαλίζουμε με ρίγανη.",
+          "Ραντίζουμε με άφθονο ελαιόλαδο και λίγο αλάτι και συνοδεύουμε με κρίθινα παξιμάδια."
+        ]
+      },
+      {
+        id: "r17", title: "Κοτόσουπα αυγολέμονο ελαφριά", category: "Κρεατικά", emoji: "🍲", bg: "#fdf0d5",
+        time: "45' • 4 μερίδες",
+        ingredients: ["600γρ κοτόπουλο", "2 καρότα & 1 πατάτα", "80γρ ρύζι ή φιδές", "1 αυγό & 1 λεμόνι", "Αλάτι & πιπέρι"],
+        steps: [
+          "Βράζουμε το κοτόπουλο με τα καρότα, την πατάτα, αλάτι και πιπέρι μέχρι να μαλακώσει καλά.",
+          "Αφαιρούμε το κοτόπουλο (το κόβουμε σε μπουκιές) και ρίχνουμε στο ζωμό το ρύζι να βράσει, προσθέτοντας ξανά το κοτόπουλο.",
+          "Δένουμε στο τέλος με αυγολέμονο εκτός φωτιάς ανακατεύοντας απαλά."
+        ]
+      },
+      {
+        id: "r18", title: "Κριθαρότο με σάλτσα ντομάτας", category: "Ζυμαρικά", emoji: "🍚", bg: "#fae2d4",
+        time: "30' • 4 μερίδες",
+        ingredients: ["350γρ κριθαράκι μέτριο", "400γρ τριμμένη ντομάτα", "1 κρεμμύδι", "Ζεστός ζωμός ή νερό", "Ελαιόλαδο, αλάτι & πιπέρι"],
+        steps: [
+          "Σοτάρουμε το ψιλοκομμένο κρεμμύδι σε ελαιόλαδο και ρίχνουμε το κριθαράκι για 1–2 λεπτά να γυαλίσει.",
+          "Προσθέτουμε τη ντομάτα, αλάτι, πιπέρι και σταδιακά ζεστό νερό/ζωμό ανακατεύοντας τακτικά.",
+          "Μαγειρεύουμε για περίπου 15–18 λεπτά μέχρι να γίνει τρυφερό και μελωμένο."
+        ]
+      },
+      {
+        id: "r19", title: "Φακοσαλάτα με μυρωδικά & φέτα", category: "Όσπρια", emoji: "🥗", bg: "#e5f1e6",
+        time: "30' • 3–4 μερίδες",
+        ingredients: ["250γρ φακές", "100γρ φέτα", "Ντοματίνια & φρέσκο κρεμμυδάκι", "Μαϊντανός ή δυόσμος", "Ελαιόλαδο, ξύδι ή λεμόνι & αλάτι"],
+        steps: [
+          "Βράζουμε τις φακές να κρατάνε ελαφρώς, τις στραγγίζουμε και τις αφήνουμε να κρυώσουν.",
+          "Ανακατεύουμε με ντοματίνια, φρέσκο κρεμμυδάκι, μυρωδικά και κυβάκια φέτας.",
+          "Περιχύνουμε με ελαιόλαδο, λεμόνι ή ξύδι και αλάτι."
+        ]
+      },
+      {
+        id: "r20", title: "Ψητά μανιτάρια με σκόρδο & μυρωδικά", category: "Ελαφριά", emoji: "🍄", bg: "#efe5dc",
+        time: "20' • 3 μερίδες",
+        ingredients: ["500γρ μανιτάρια", "2 σκελίδες σκόρδο", "Ελαιόλαδο", "Θυμάρι ή ρίγανη & μαϊντανός", "Αλάτι, πιπέρι & λίγο λεμόνι"],
+        steps: [
+          "Καθαρίζουμε τα μανιτάρια και τα κόβουμε σε φέτες ή τα αφήνουμε ολόκληρα αν είναι μικρά.",
+          "Τα σοτάρουμε σε ζεστό τηγάνι με ελαιόλαδο και το σκόρδο μέχρι να ροδίσουν και να εξατμιστούν τα υγρά τους.",
+          "Πασπαλίζουμε με μυρωδικά, αλάτι, πιπέρι και λίγες σταγόνες λεμόνι."
+        ]
+      },
+      {
+        id: "r21", title: "Μπακαλιάρος πλακί στο φούρνο", category: "Ψάρια", emoji: "🐟", bg: "#dceef8",
+        time: "45' • 4 μερίδες",
+        ingredients: ["4 μερίδες μπακαλιάρος", "3 ντομάτες", "1 κρεμμύδι & 2 σκελίδες σκόρδο", "Μαϊντανός", "Ελαιόλαδο, αλάτι & πιπέρι"],
+        steps: [
+          "Στρώνουμε στον πάτο του ταψιού ροδέλες κρεμμυδιού, σκόρδο και ντομάτα με λίγο ελαιόλαδο.",
+          "Τοποθετούμε από πάνω τα κομμάτια μπακαλιάρου, αλατοπιπερώνουμε, ρίχνουμε μαϊντανό και υπόλοιπη ντομάτα και ελαιόλαδο.",
+          "Ψήνουμε στους 180°C για περίπου 35–40 λεπτά μέχρι να μελώσει η σάλτσα."
+        ]
+      },
+      {
+        id: "r22", title: "Τραχανάς γλυκός ή ξινός σούπα", category: "Ελαφριά", emoji: "🥣", bg: "#f9e7d2",
+        time: "20' • 3–4 μερίδες",
+        ingredients: ["200γρ τραχανάς", "1 λίτρο νερό ή ζωμός", "Λίγη φέτα (προαιρετικά)", "Ελαιόλαδο & αλάτι"],
+        steps: [
+          "Βράζουμε το νερό ή το ζωμό με λίγο αλάτι και ελαιόλαδο στην κατσαρόλα.",
+          "Ρίχνουμε τον τραχανά ανακατεύοντας ώστε να μη σβολιάσει.",
+          "Σιγοβράζουμε για περίπου 10–12 λεπτά μέχρι να χυλώσει και σερβίρουμε ζεστό."
+        ]
       }
+    ];
 
-      const usedThisWeek = new Set();
-      const lunches = pickDistinct(mainPool.length >= 7 ? mainPool : allRecipes, 7, usedThisWeek);
-      lunches.forEach((r) => usedThisWeek.add(r.id));
-
-      const lightDinners = pickDistinct(lightPool, 7, usedThisWeek);
-      lightDinners.forEach((r) => usedThisWeek.add(r.id));
-
-      const extraDinners = pickDistinct(allRecipes, 7 - lightDinners.length, usedThisWeek);
-      const dinners = [...lightDinners, ...extraDinners].sort(() => Math.random() - 0.5);
-
-      return DAYS_OF_WEEK.map((day, idx) => ({
+    function buildInitialWeeklyPlan(recipes, excludeIds = []) {
+      const pool = recipes.filter((r) => !excludeIds.includes(r.id));
+      const source = pool.length >= 14 ? pool : [...recipes];
+      const shuffled = [...source].sort(() => Math.random() - 0.5);
+      const selected = shuffled.slice(0, 14);
+      return DAYS.map((day, idx) => ({
         day,
-        lunchId: lunches[idx]?.id || allRecipes[idx % allRecipes.length].id,
-        dinnerId: dinners[idx]?.id || allRecipes[(idx + 7) % allRecipes.length].id
+        lunchId: selected[idx * 2]?.id || recipes[0].id,
+        dinnerId: selected[idx * 2 + 1]?.id || recipes[1]?.id || recipes[0].id
       }));
     }
 
-    function getDefaultState() {
-      const recipes = JSON.parse(JSON.stringify(BUILTIN_RECIPES));
+    function defaultState() {
+      const initialRecipes = DEFAULT_RECIPES.map((r) => ({ ...r, isCustom: false }));
       return {
         theme: "light",
-        showBaskets: true,
+        basketsBg: true,
         list: [],
         budget: null,
-        catalog: JSON.parse(JSON.stringify(DEFAULT_CATALOG)),
+        catalog: DEFAULT_CATALOG,
         pantry: [
-          { id: "p1", name: "Ελαιόλαδο", count: 1, unit: "λίτρο", status: "ok", note: "Ντουλάπι κουζίνας" },
-          { id: "p2", name: "Μακαρόνια Νο6", count: 2, unit: "πακέτα", status: "ok", note: "Ράφι ζυμαρικών" },
-          { id: "p3", name: "Ρύζι καρολίνα", count: 1, unit: "πακέτο", status: "low", note: "Λίγο απόθεμα" }
+          { id: "p1", name: "Ελαιόλαδο", qty: "1 λίτρο", status: "ok", note: "Ντουλάπι κουζίνας" },
+          { id: "p2", name: "Μακαρόνια", qty: "2 πακέτα", status: "ok", note: "" },
+          { id: "p3", name: "Φακές", qty: "1 πακέτο", status: "low", note: "Λίγες μερίδες" }
         ],
-        recipes,
-        weeklyPlan: buildDistinctWeeklyPlan(recipes, [])
+        recipes: initialRecipes,
+        weeklyPlan: buildInitialWeeklyPlan(initialRecipes),
+        lastWeekIds: []
       };
     }
-
-    let state = loadState();
-    let hideBought = false;
-    let pendingPhotoDataUrl = "";
 
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
-          if (parsed && Array.isArray(parsed.list) && Array.isArray(parsed.recipes)) {
-            if (!parsed.theme) parsed.theme = "light";
-            if (typeof parsed.showBaskets !== "boolean") parsed.showBaskets = true;
-            if (!Array.isArray(parsed.weeklyPlan) || parsed.weeklyPlan.length !== 7) {
-              parsed.weeklyPlan = buildDistinctWeeklyPlan(parsed.recipes, []);
-            }
-            return parsed;
-          }
+          const base = defaultState();
+          return {
+            ...base,
+            ...parsed,
+            catalog: Array.isArray(parsed.catalog) && parsed.catalog.length ? parsed.catalog : base.catalog,
+            recipes: Array.isArray(parsed.recipes) && parsed.recipes.length ? parsed.recipes : base.recipes,
+            weeklyPlan: Array.isArray(parsed.weeklyPlan) && parsed.weeklyPlan.length === 7 ? parsed.weeklyPlan : base.weeklyPlan
+          };
         }
       } catch (e) {}
-      return getDefaultState();
+      return defaultState();
     }
+
+    let state = loadState();
+    let hideBought = false;
+    let pantryFilter = "ALL";
+    let pendingPhotoDataUrl = "";
+    let activeModalRecipeId = null;
 
     function saveState() {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch (e) {
-        showToast("Περιορισμένος χώρος αποθήκευσης (δοκίμασε χωρίς μεγάλες φωτογραφίες)");
+        showToast("Σημείωση: Γέμισε η τοπική μνήμη (π.χ. λόγω μεγάλης φωτογραφίας)");
       }
       renderAll();
     }
 
-    let toastTimer = null;
     function showToast(msg) {
       const el = document.getElementById("toast");
       el.textContent = msg;
       el.classList.remove("opacity-0");
       el.classList.add("opacity-100");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => {
         el.classList.remove("opacity-100");
         el.classList.add("opacity-0");
-      }, 2500);
+      }, 2400);
     }
 
-    function formatEur(n) {
-      return (Number(n) || 0).toFixed(2).replace(".", ",") + " €";
+    function formatEur(val) {
+      return (Number(val) || 0).toFixed(2).replace(".", ",") + " €";
     }
 
     function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, (m) => ({
+      return String(str ?? "").replace(/[&<>"']/g, (m) => ({
         "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
       }[m]));
     }
 
-    // =========================================================
-    // ΘΕΜΑ (ΗΛΙΟΣ / ΦΕΓΓΑΡΙ) & ΦΟΝΤΟ ΚΑΛΑΘΙΩΝ
-    // =========================================================
-    function applyThemeAndBackground() {
+    function renderRecipeArtwork(recipe, sizeClass = "w-14 h-14 text-2xl rounded-2xl") {
+      const bg = recipe.bg || "#f2e4d8";
+      const emoji = recipe.emoji || "🍽️";
+      return `
+        <div class="${sizeClass} flex items-center justify-center border border-coffee-border/80 shadow-2xs select-none"
+             style="background: linear-gradient(135deg, ${escapeHtml(bg)}, rgba(255,255,255,0.55)); color: #2b211b;">
+          <span aria-hidden="true">${escapeHtml(emoji)}</span>
+        </div>
+      `;
+    }
+
+    function renderProductThumb(emoji, photoDataUrl, title) {
+      if (photoDataUrl) {
+        return <img src="${photoDataUrl}" alt="${escapeHtml(title)}" class="w-11 h-11 rounded-xl object-cover border border-coffee-border shrink-0" />;
+      }
+      return `
+        <div class="w-11 h-11 rounded-xl bg-coffee-soft border border-coffee-border flex items-center justify-center text-lg shrink-0 select-none" aria-hidden="true">
+          ${escapeHtml(emoji || "🛒")}
+        </div>
+      `;
+    }
+
+    function applyTheme() {
       const isDark = state.theme === "dark";
       document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
 
       const lightBtn = document.getElementById("themeLightBtn");
       const darkBtn = document.getElementById("themeDarkBtn");
 
-      if (isDark) {
-        darkBtn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1 bg-coffee text-white shadow-xs";
-        lightBtn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1 text-coffee-muted hover:text-coffee-ink";
-      } else {
-        lightBtn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1 bg-coffee text-white shadow-xs";
+      if (!isDark) {
+        lightBtn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1 bg-coffee text-white shadow-2xs";
         darkBtn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1 text-coffee-muted hover:text-coffee-ink";
+      } else {
+        darkBtn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1 bg-coffee text-white shadow-2xs";
+        lightBtn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1 text-coffee-muted hover:text-coffee-ink";
       }
 
-      document.body.classList.toggle("basket-bg-disabled", !state.showBaskets);
-      const basketBtn = document.getElementById("toggleBasketsBtn");
-      basketBtn.textContent = state.showBaskets ? "🧺 Φόντο: Ναι" : "🧺 Φόντο: Όχι";
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.setAttribute("content", isDark ? "#16110e" : "#7c4a2d");
+    }
+
+    function initBasketBackground() {
+      const layer = document.getElementById("basketBgLayer");
+      const baskets = [
+        { left: "4%", size: 30, dur: "24s", delay: "-4s" },
+        { left: "14%", size: 22, dur: "29s", delay: "-15s" },
+        { left: "26%", size: 34, dur: "26s", delay: "-9s" },
+        { left: "39%", size: 24, dur: "32s", delay: "-21s" },
+        { left: "52%", size: 32, dur: "27s", delay: "-12s" },
+        { left: "65%", size: 22, dur: "30s", delay: "-18s" },
+        { left: "77%", size: 34, dur: "25s", delay: "-6s" },
+        { left: "89%", size: 26, dur: "28s", delay: "-14s" }
+      ];
+
+      layer.innerHTML = baskets.map((b) => `
+        <svg class="falling-basket" width="${b.size}" height="${b.size}" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"
+             style="left:${b.left}; animation-duration:${b.dur}; animation-delay:${b.delay};">
+          <path d="m5 11 4-7" />
+          <path d="m19 11-4-7" />
+          <path d="M2 11h20" />
+          <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
+          <path d="m9 11 1 9" />
+          <path d="m15 11-1 9" />
+        </svg>
+      `).join("");
+
+      applyBasketBackgroundState();
+    }
+
+    function applyBasketBackgroundState() {
+      document.body.classList.toggle("basket-bg-disabled", !state.basketsBg);
+      const btn = document.getElementById("toggleBasketsBtn");
+      btn.textContent = state.basketsBg ? "🧺 Φόντο: Ναι" : "🧺 Φόντο: Όχι";
     }
 
     document.getElementById("themeLightBtn").addEventListener("click", () => {
       state.theme = "light";
       saveState();
-      showToast("☀️ Ανοιχτό θέμα ενεργό");
     });
 
     document.getElementById("themeDarkBtn").addEventListener("click", () => {
       state.theme = "dark";
       saveState();
-      showToast("🌙 Σκούρο θέμα ενεργό");
     });
 
     document.getElementById("toggleBasketsBtn").addEventListener("click", () => {
-      state.showBaskets = !state.showBaskets;
+      state.basketsBg = !state.basketsBg;
       saveState();
-      showToast(state.showBaskets ? "Ενεργοποιήθηκαν τα διακριτικά καλάθια" : "Απενεργοποιήθηκαν τα καλάθια φόντου");
+      showToast(state.basketsBg ? "Ενεργοποιήθηκαν τα καλαθάκια στο φόντο" : "Απενεργοποιήθηκαν τα καλαθάκια στο φόντο");
     });
 
-    // Έλεγχος αν υπάρχει υλικό στο ντουλάπι
-    function findInPantry(ingredientText) {
-      const clean = ingredientText
-        .replace(/^[\d.,/]+\s*(γρ|kg|κιλό|κιλά|λίτρα|λίτρο|lt|τεμ|πακέτο|πακέτα|συσκ\.?|κουτί|κουτιά|κ\.σ\.|κ\.γ\.|ματσάκι|φλιτζάνι|φέτες|σκελίδες|κονσέρβες|μεγάλες|ώριμες)?\s*/i, "")
-        .trim()
-        .toLowerCase();
-
-      if (!clean) return null;
-      return state.pantry.find((p) => {
-        const pName = p.name.toLowerCase().trim();
-        return pName && (clean.includes(pName) || pName.includes(clean));
-      }) || null;
-    }
-
-    // Εύρεση φθηνότερης τιμής στον κατάλογο
-    function findCheapestInCatalog(productName) {
-      const q = productName.toLowerCase().trim();
-      if (!q) return null;
-      const match = state.catalog.find((c) => c.name.toLowerCase().includes(q) || q.includes(c.name.toLowerCase()));
-      if (!match || !match.prices) return null;
-      const sorted = Object.entries(match.prices).sort((a, b) => a[1] - b[1]);
-      if (!sorted.length) return null;
-      return { product: match.name, store: sorted[0][0], price: sorted[0][1] };
-    }
-
-    // =========================================================
-    // MODALS & BACKUP
-    // =========================================================
-    window.closeModal = function (id) {
-      document.getElementById(id).classList.add("hidden");
-    };
-    document.getElementById("openInstallBtn").addEventListener("click", () => {
-      document.getElementById("installModal").classList.remove("hidden");
-    });
-    document.getElementById("openBackupBtn").addEventListener("click", () => {
-      document.getElementById("backupModal").classList.remove("hidden");
-    });
-
-    document.getElementById("exportJsonBtn").addEventListener("click", () => {
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `bakalis-backup-${new Date().toISOString().slice(0, 10)}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
-      showToast("Το αντίγραφο JSON κατέβηκε!");
-    });
-
-    document.getElementById("importJsonInput").addEventListener("change", (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          const imported = JSON.parse(reader.result);
-          if (imported && Array.isArray(imported.list) && Array.isArray(imported.recipes)) {
-            state = imported;
-            saveState();
-            closeModal("backupModal");
-            showToast("Επιτυχής επαναφορά δεδομένων!");
-          } else {
-            showToast("Μη έγκυρο αρχείο αντιγράφου");
-          }
-        } catch (err) {
-          showToast("Σφάλμα ανάγνωσης αρχείου");
-        }
+    function initPwaManifest() {
+      const iconSvg = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="40" fill="#7c4a2d"/><text x="96" y="118" font-size="84" text-anchor="middle">🛒</text></svg>;
+      const iconUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(iconSvg);
+      const manifest = {
+        name: "Lista -psonia -menu- recipes",
+        short_name: "Lista -psonia -menu- recipes",
+        start_url: "./",
+        display: "standalone",
+        background_color: "#faf6f1",
+        theme_color: "#7c4a2d",
+        icons: [{ src: iconUrl, sizes: "192x192", type: "image/svg+xml" }]
       };
-      reader.readAsText(file);
-    });
+      const blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
+      document.getElementById("pwa-manifest").href = URL.createObjectURL(blob);
+    }
 
-    document.getElementById("resetDefaultBtn").addEventListener("click", () => {
-      state = getDefaultState();
-      document.getElementById("budgetInput").value = "";
-      saveState();
-      closeModal("backupModal");
-      showToast("Επαναφέρθηκαν οι 22 έτοιμες συνταγές & ο αρχικός κατάλογος");
-    });
-
-    // =========================================================
-    // TAB NAVIGATION
-    // =========================================================
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
+        const target = btn.dataset.tab;
         document.querySelectorAll(".tab-btn").forEach((b) => {
           b.classList.remove("active", "bg-coffee", "text-white", "shadow-sm");
           b.classList.add("text-coffee-muted", "hover:bg-coffee-soft/60");
         });
+        btn.classList.add("active", "bg-coffee", "text-white", "shadow-sm");
+        btn.classList.remove("text-coffee-muted", "hover:bg-coffee-soft/60");
+
         document.querySelectorAll(".panel").forEach((p) => {
           p.classList.add("hidden");
           p.classList.remove("block");
         });
-
-        btn.classList.add("active", "bg-coffee", "text-white", "shadow-sm");
-        btn.classList.remove("text-coffee-muted", "hover:bg-coffee-soft/60");
-
-        const target = document.getElementById("panel-" + btn.dataset.tab);
-        if (target) {
-          target.classList.remove("hidden");
-          target.classList.add("block");
-        }
+        const activePanel = document.getElementById("panel-" + target);
+        activePanel.classList.remove("hidden");
+        activePanel.classList.add("block");
       });
     });
 
-    // =========================================================
-    // 1. ΛΙΣΤΑ ΨΩΝΙΩΝ
-    // =========================================================
     function renderQuickAdd() {
       const container = document.getElementById("quickAddContainer");
-      container.innerHTML = QUICK_ITEMS.map((q, idx) => `
-        <button type="button" onclick="quickAddItem(${idx})"
-          class="px-3 py-1.5 rounded-full bg-cream hover:bg-coffee-soft border border-coffee-border text-xs font-medium text-coffee-ink transition">
-          ＋ ${escapeHtml(q.name)}
+      container.innerHTML = QUICK_ITEMS.map((q) => `
+        <button type="button" onclick="quickAddItem('${escapeHtml(q.name)}', '${escapeHtml(q.category)}', '${escapeHtml(q.emoji)}')"
+          class="px-3 py-1.5 rounded-xl bg-cream hover:bg-coffee-soft border border-coffee-border text-xs font-semibold text-coffee-ink transition">
+          ${q.emoji} ${escapeHtml(q.name)}
         </button>
       `).join("");
     }
 
-    window.quickAddItem = function (idx) {
-      const q = QUICK_ITEMS[idx];
-      if (!q) return;
-      const best = findCheapestInCatalog(q.name);
+    function quickAddItem(name, category, emoji = "🛒") {
+      const matchedCatalog = findCheapestInCatalog(name);
       state.list.unshift({
-        id: "i_" + Date.now() + "_" + idx,
-        name: q.name,
-        category: q.category,
-        price: best ? best.price : 0,
-        store: best ? best.store : "",
+        id: "i_" + Date.now() + "_" + Math.random().toString(36).slice(2, 5),
+        name,
+        category,
+        emoji,
+        price: matchedCatalog ? matchedCatalog.price : 0,
+        store: matchedCatalog ? matchedCatalog.market : "",
         photo: "",
         bought: false
       });
       saveState();
-      showToast(`${q.name} προστέθηκε στη λίστα`);
-    };
+      showToast(Προστέθηκε: ${name});
+    }
 
-    // Smart Hint κατά την πληκτρολόγηση
-    document.getElementById("itemName").addEventListener("input", (e) => {
-      const val = e.target.value.trim();
-      const box = document.getElementById("smartHintBox");
-      if (val.length < 2) {
-        box.classList.add("hidden");
-        return;
-      }
-      const inPantry = findInPantry(val);
-      const cheapest = findCheapestInCatalog(val);
-      const hints = [];
-
-      if (inPantry) {
-        hints.push(`🏠 Υπάρχει ήδη στο ντουλάπι: <strong>${escapeHtml(inPantry.name)}</strong> (${inPantry.count} ${escapeHtml(inPantry.unit)})`);
-      }
-      if (cheapest) {
-        hints.push(`💶 Φθηνότερο στον κατάλογο: <strong>${formatEur(cheapest.price)}</strong> (${escapeHtml(cheapest.store)})`);
-      }
-
-      if (hints.length) {
-        box.innerHTML = hints.join(" &nbsp;•&nbsp; ");
-        box.classList.remove("hidden");
-      } else {
-        box.classList.add("hidden");
-      }
-    });
-
-    // Φωτογραφία προϊόντος (συμπιεσμένο thumbnail)
     document.getElementById("itemPhotoInput").addEventListener("change", (e) => {
       const file = e.target.files?.[0];
-      if (!file) return;
+      if (!file) {
+        pendingPhotoDataUrl = "";
+        document.getElementById("selectedPhotoLabel").textContent = "";
+        return;
+      }
       const reader = new FileReader();
       reader.onload = () => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement("canvas");
-          const maxW = 240;
-          const scale = Math.min(1, maxW / img.width);
-          canvas.width = img.width * scale;
-          canvas.height = img.height * scale;
-          canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-          pendingPhotoDataUrl = canvas.toDataURL("image/jpeg", 0.7);
-          document.getElementById("selectedPhotoLabel").textContent = `✓ Φωτογραφία: ${file.name}`;
-        };
-        img.src = reader.result;
+        pendingPhotoDataUrl = String(reader.result || "");
+        document.getElementById("selectedPhotoLabel").textContent = "✓ " + file.name;
       };
       reader.readAsDataURL(file);
+    });
+
+    function findPantryMatch(name) {
+      const clean = name.trim().toLowerCase();
+      if (!clean) return null;
+      return state.pantry.find((p) =>
+        p.name.toLowerCase().includes(clean) || clean.includes(p.name.toLowerCase())
+      );
+    }
+
+    function findCheapestInCatalog(name) {
+      const clean = name.trim().toLowerCase();
+      if (!clean) return null;
+      const prod = state.catalog.find((c) =>
+        c.name.toLowerCase().includes(clean) || clean.includes(c.name.toLowerCase())
+      );
+      if (!prod || !prod.prices) return null;
+      const entries = Object.entries(prod.prices).sort((a, b) => a[1] - b[1]);
+      if (!entries.length) return null;
+      return { productName: prod.name, market: entries[0][0], price: entries[0][1] };
+    }
+
+    document.getElementById("itemName").addEventListener("input", (e) => {
+      const val = e.target.value.trim();
+      const hintBox = document.getElementById("smartHintBox");
+      if (val.length < 2) {
+        hintBox.classList.add("hidden");
+        return;
+      }
+
+      const inPantry = findPantryMatch(val);
+      const cheapest = findCheapestInCatalog(val);
+      const messages = [];
+
+      if (inPantry) {
+        messages.push🏠 Υπάρχει ήδη στο ντουλάπι: <strong>${escapeHtml(inPantry.name)}</strong> (${escapeHtml(inPantry.qty || "σε απόθεμα")}).`);
+      }
+      if (cheapest) {
+        messages.push💶 Φθηνότερη καταχωρημένη τιμή για <strong>${escapeHtml(cheapest.productName)}</strong>: <strong>${formatEur(cheapest.price)}</strong> στο <strong>${escapeHtml(cheapest.market)}</strong>.`);
+      }
+
+      if (messages.length) {
+        hintBox.innerHTML = messages.join("<br>");
+        hintBox.classList.remove("hidden");
+      } else {
+        hintBox.classList.add("hidden");
+      }
     });
 
     document.getElementById("listForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("itemName").value.trim();
       if (!name) return;
+
       const category = document.getElementById("itemCategory").value;
-      const price = parseFloat(document.getElementById("itemPrice").value) || 0;
-      const store = document.getElementById("itemStore").value.trim();
+      const priceInput = parseFloat(document.getElementById("itemPrice").value);
+      const storeInput = document.getElementById("itemStore").value.trim();
+      const catalogMatch = findCheapestInCatalog(name);
+
+      const finalPrice = !isNaN(priceInput) && priceInput > 0 ? priceInput : (catalogMatch ? catalogMatch.price : 0);
+      const finalStore = storeInput || (catalogMatch ? catalogMatch.market : "");
+      const catEmoji = category.split(" ")[0] || "🛒";
 
       state.list.unshift({
         id: "i_" + Date.now(),
         name,
         category,
-        price,
-        store,
+        emoji: catEmoji,
+        price: finalPrice,
+        store: finalStore,
         photo: pendingPhotoDataUrl,
         bought: false
       });
 
-      if (price > 0 && store) {
-        recordPrice(name, category, store, price);
+      if (!isNaN(priceInput) && priceInput > 0 && storeInput) {
+        recordPrice(name, category, storeInput, priceInput, catEmoji);
       }
 
       pendingPhotoDataUrl = "";
@@ -1470,12 +1210,12 @@
       document.getElementById("smartHintBox").classList.add("hidden");
       e.target.reset();
       saveState();
-      showToast("Προστέθηκε στη λίστα");
+      showToast(Προστέθηκε το «${name}» στη λίστα);
     });
 
-    document.getElementById("budgetInput").addEventListener("input", (e) => {
+    document.getElementById("budgetInput").addEventListener("change", (e) => {
       const val = parseFloat(e.target.value);
-      state.budget = val > 0 ? val : null;
+      state.budget = !isNaN(val) && val > 0 ? val : null;
       saveState();
     });
 
@@ -1488,81 +1228,71 @@
     });
 
     document.getElementById("clearBoughtBtn").addEventListener("click", () => {
-      const before = state.list.length;
       state.list = state.list.filter((i) => !i.bought);
       saveState();
-      showToast(before !== state.list.length ? "Διαγράφηκαν τα αγορασμένα" : "Δεν υπάρχουν αγορασμένα");
+      showToast("Αφαιρέθηκαν τα αγορασμένα προϊόντα");
     });
 
     document.getElementById("shareListBtn").addEventListener("click", async () => {
-      const lines = state.list.map((i) => `${i.bought ? "✅" : "⬜"} ${i.name}${i.price ? " (" + formatEur(i.price) + ")" : ""}${i.store ? " [" + i.store + "]" : ""}`);
-      const text = "🛒 Λίστα Σούπερ Μάρκετ:\n" + (lines.join("\n") || "Κενή λίστα");
+      if (!state.list.length) {
+        showToast("Η λίστα είναι άδεια");
+        return;
+      }
+      const lines = state.list.map((i) =>
+        ${i.bought ? "✅" : "⬜"} ${i.name}${i.price ? " (" + formatEur(i.price) + ")" : ""}${i.store ? " - " + i.store : ""}
+      );
+      const text = "🛒 Lista -psonia -menu- recipes:\n" + lines.join("\n");
       if (navigator.share) {
-        try {
-          await navigator.share({ title: "Λίστα Σούπερ Μάρκετ", text });
-          return;
-        } catch (e) {}
+        try { await navigator.share({ text }); return; } catch (e) {}
       }
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand("copy");
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(text);
         showToast("Η λίστα αντιγράφηκε στο πρόχειρο");
-      } catch (err) {
-        showToast("Δεν ήταν δυνατή η αντιγραφή");
       }
-      document.body.removeChild(ta);
     });
 
-    window.toggleBought = function (id, moveToPantry = false) {
+    function toggleBoughtItem(id, sendToPantry = false) {
       const item = state.list.find((i) => i.id === id);
       if (!item) return;
+      item.bought = sendToPantry ? true : !item.bought;
 
-      if (moveToPantry) {
-        item.bought = true;
-        const exists = state.pantry.find((p) => p.name.toLowerCase() === item.name.toLowerCase());
-        if (exists) {
-          exists.count = (Number(exists.count) || 1) + 1;
-          exists.status = "ok";
+      if (item.bought && sendToPantry) {
+        const existing = state.pantry.find((p) => p.name.toLowerCase() === item.name.toLowerCase());
+        if (existing) {
+          existing.status = "ok";
+          existing.note = "Ανανεώθηκε από ψώνια";
         } else {
           state.pantry.unshift({
             id: "p_" + Date.now(),
             name: item.name,
-            count: 1,
-            unit: "τεμ.",
+            qty: "1 τεμ.",
             status: "ok",
             note: "Από λίστα ψωνιών"
           });
         }
-        showToast(`«${item.name}» μεταφέρθηκε στο ντουλάπι!`);
-      } else {
-        item.bought = !item.bought;
+        showToast(«${item.name}» αγοράστηκε & μπήκε στο ντουλάπι);
       }
       saveState();
-    };
+    }
 
-    window.deleteListItem = function (id) {
+    function deleteListItem(id) {
       state.list = state.list.filter((i) => i.id !== id);
       saveState();
-    };
+    }
 
-    // =========================================================
-    // 2. ΚΑΤΑΛΟΓΟΣ & ΣΥΓΚΡΙΣΗ ΤΙΜΩΝ
-    // =========================================================
-    function recordPrice(productName, category, market, price) {
-      let entry = state.catalog.find((c) => c.name.toLowerCase() === productName.toLowerCase());
+    function recordPrice(productName, category, market, price, emoji = "🛒") {
+      let entry = state.catalog.find((c) => c.name.toLowerCase() === productName.trim().toLowerCase());
       if (!entry) {
         entry = {
           id: "c_" + Date.now() + "_" + Math.random().toString(36).slice(2, 5),
-          name: productName,
+          name: productName.trim(),
           category,
+          emoji,
           prices: {}
         };
         state.catalog.unshift(entry);
       }
-      entry.prices[market] = Number(price);
+      entry.prices[market.trim()] = Number(price);
     }
 
     document.getElementById("priceForm").addEventListener("submit", (e) => {
@@ -1571,315 +1301,363 @@
       const category = document.getElementById("priceCategory").value;
       const market = document.getElementById("priceMarket").value.trim();
       const price = parseFloat(document.getElementById("priceValue").value);
-      if (!name || !market || !(price > 0)) return;
+      if (!name || !market || isNaN(price) || price <= 0) return;
 
-      recordPrice(name, category, market, price);
+      recordPrice(name, category, market, price, category.split(" ")[0] || "🛒");
       e.target.reset();
       saveState();
-      showToast("Αποθηκεύτηκε η τιμή στον κατάλογο");
+      showToast(Καταχωρήθηκε τιμή ${formatEur(price)} για ${market});
     });
 
     document.getElementById("catalogSearch").addEventListener("input", renderCatalog);
     document.getElementById("catalogCategoryFilter").addEventListener("change", renderCatalog);
     document.getElementById("catalogSort").addEventListener("change", renderCatalog);
 
-    window.addCatalogToList = function (catalogId) {
+    function addCatalogItemToList(catalogId) {
       const prod = state.catalog.find((c) => c.id === catalogId);
       if (!prod) return;
       const entries = Object.entries(prod.prices || {}).sort((a, b) => a[1] - b[1]);
-      const [cheapestStore, cheapestPrice] = entries[0] || ["", 0];
+      const [bestMarket, bestPrice] = entries[0] || ["", 0];
 
       state.list.unshift({
         id: "i_" + Date.now(),
         name: prod.name,
         category: prod.category,
-        price: cheapestPrice,
-        store: cheapestStore,
+        emoji: prod.emoji || "🛒",
+        price: bestPrice,
+        store: bestMarket,
         photo: "",
         bought: false
       });
       saveState();
-      showToast(`${prod.name} (${formatEur(cheapestPrice)}) μπήκε στη λίστα`);
-    };
+      showToast(${prod.name} προστέθηκε στη λίστα (${formatEur(bestPrice)}));
+    }
 
-    // =========================================================
-    // 3. ΝΤΟΥΛΑΠΙ / Ο ΜΠΑΚΑΛΗΣ
-    // =========================================================
     document.getElementById("pantryForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("pantryName").value.trim();
       if (!name) return;
-      state.pantry.unshift({
-        id: "p_" + Date.now(),
-        name,
-        count: Math.max(1, parseInt(document.getElementById("pantryCount").value, 10) || 1),
-        unit: document.getElementById("pantryUnit").value.trim() || "τεμ.",
-        status: document.getElementById("pantryStatus").value,
-        note: document.getElementById("pantryNote").value.trim()
-      });
+      const qty = document.getElementById("pantryQty").value.trim() || "1 τεμ.";
+      const status = document.getElementById("pantryStatus").value;
+      const note = document.getElementById("pantryNote").value.trim();
+
+      const existing = state.pantry.find((p) => p.name.toLowerCase() === name.toLowerCase());
+      if (existing) {
+        existing.qty = qty;
+        existing.status = status;
+        if (note) existing.note = note;
+        showToast(Ενημερώθηκε το «${name}» στο ντουλάπι);
+      } else {
+        state.pantry.unshift({ id: "p_" + Date.now(), name, qty, status, note });
+        showToast(Προστέθηκε το «${name}» στο ντουλάπι);
+      }
+
       e.target.reset();
-      document.getElementById("pantryCount").value = 1;
-      document.getElementById("pantryUnit").value = "τεμ.";
       saveState();
-      showToast("Αποθηκεύτηκε στο ντουλάπι");
     });
 
-    document.getElementById("pantrySearch").addEventListener("input", renderPantry);
+    document.querySelectorAll(".pfilter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        pantryFilter = btn.dataset.pfilter;
+        document.querySelectorAll(".pfilter-btn").forEach((b) => {
+          b.className = "pfilter-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-coffee-soft text-coffee";
+        });
+        btn.className = "pfilter-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-coffee text-white";
+        renderPantry();
+      });
+    });
 
-    window.adjustPantryCount = function (id, delta) {
+    function cyclePantryStatus(id) {
       const item = state.pantry.find((p) => p.id === id);
       if (!item) return;
-      const next = (Number(item.count) || 1) + delta;
-      if (next <= 0) {
-        window.finishPantryItem(id);
-        return;
-      }
-      item.count = next;
-      if (item.count === 1 && item.status === "ok") item.status = "low";
+      const order = ["ok", "low", "expiring"];
+      item.status = order[(order.indexOf(item.status || "ok") + 1) % order.length];
       saveState();
-    };
+    }
 
-    window.finishPantryItem = function (id) {
+    function movePantryItemToList(id) {
       const idx = state.pantry.findIndex((p) => p.id === id);
       if (idx === -1) return;
       const item = state.pantry[idx];
-      const best = findCheapestInCatalog(item.name);
+      const match = findCheapestInCatalog(item.name);
+
       state.list.unshift({
         id: "i_" + Date.now(),
         name: item.name,
         category: "🥫 Τρόφιμα",
-        price: best ? best.price : 0,
-        store: best ? best.store : "",
+        emoji: "🥫",
+        price: match ? match.price : 0,
+        store: match ? match.market : "",
         photo: "",
         bought: false
       });
       state.pantry.splice(idx, 1);
       saveState();
-      showToast(`«${item.name}» μεταφέρθηκε στη λίστα ψωνιών`);
-    };
+      showToast(«${item.name}» μεταφέρθηκε στη λίστα ψωνιών);
+    }
 
-    // =========================================================
-    // 4. ΕΒΔΟΜΑΔΙΑΙΟ ΜΕΝΟΥ
-    // =========================================================
+    function deletePantryItem(id) {
+      state.pantry = state.pantry.filter((p) => p.id !== id);
+      saveState();
+    }
+
     document.getElementById("generateWeekBtn").addEventListener("click", () => {
-      state.weeklyPlan = buildDistinctWeeklyPlan(state.recipes, state.weeklyPlan);
+      const currentIds = state.weeklyPlan.flatMap((d) => [d.lunchId, d.dinnerId]);
+      state.lastWeekIds = currentIds;
+      state.weeklyPlan = buildInitialWeeklyPlan(state.recipes, currentIds);
       saveState();
-      showToast("🎲 Δημιουργήθηκε νέο εβδομαδιαίο μενού 14 διαφορετικών γευμάτων!");
+      showToast("Δημιουργήθηκε νέο εβδομαδιαίο μενού χωρίς επαναλήψεις!");
     });
 
-    window.changeDayMeal = function (dayIndex, mealType, recipeId) {
-      if (!state.weeklyPlan[dayIndex]) return;
-      if (mealType === "lunch") {
-        state.weeklyPlan[dayIndex].lunchId = recipeId;
-      } else {
-        state.weeklyPlan[dayIndex].dinnerId = recipeId;
-      }
-      saveState();
-    };
+    function extractIngredientSearchTerm(ingLine) {
+      return ingLine
+        .replace(/^[\d.,/]+\s*(γρ|gr|kg|κιλά|κιλό|λίτρα|λίτρο|lt|ml|τεμ|πακέτα|πακέτο|κουτιά|κουτί|κ\.γ\.|κ\.σ\.|σκελίδες|φέτες|κονσέρβες)?\s*/i, "")
+        .replace(/\(.*?\)/g, "")
+        .trim();
+    }
 
-    window.rerollSingleMeal = function (dayIndex, mealType) {
-      const usedIds = new Set();
-      state.weeklyPlan.forEach((d) => {
-        if (d.lunchId) usedIds.add(d.lunchId);
-        if (d.dinnerId) usedIds.add(d.dinnerId);
-      });
-      const candidates = state.recipes.filter((r) => !usedIds.has(r.id));
-      const pool = candidates.length ? candidates : state.recipes;
-      const chosen = pool[Math.floor(Math.random() * pool.length)];
-      if (chosen) {
-        window.changeDayMeal(dayIndex, mealType, chosen.id);
-        showToast(`Αλλάχτηκε σε: ${chosen.title}`);
-      }
-    };
-
-    document.getElementById("addWeekToListBtn").addEventListener("click", () => {
-      const recipeIds = new Set();
-      state.weeklyPlan.forEach((d) => {
-        if (d.lunchId) recipeIds.add(d.lunchId);
-        if (d.dinnerId) recipeIds.add(d.dinnerId);
-      });
-
+    function addIngredientsToList(rawIngredients, onlyMissing = true) {
       let addedCount = 0;
-      let skippedInPantry = 0;
+      let skippedCount = 0;
 
-      recipeIds.forEach((rId) => {
-        const rec = state.recipes.find((r) => r.id === rId);
-        if (!rec) return;
+      rawIngredients.forEach((ing, i) => {
+        const cleanCore = extractIngredientSearchTerm(ing);
+        const alreadyInPantry = findPantryMatch(cleanCore || ing);
+        const alreadyInList = state.list.some((item) => !item.bought && item.name.toLowerCase() === ing.toLowerCase());
 
-        rec.ingredients.forEach((ing) => {
-          if (findInPantry(ing)) {
-            skippedInPantry++;
-            return;
-          }
-          const alreadyInList = state.list.some(
-            (item) => !item.bought && item.name.toLowerCase() === ing.toLowerCase()
-          );
-          if (!alreadyInList) {
-            const best = findCheapestInCatalog(ing);
-            state.list.unshift({
-              id: "i_" + Date.now() + "_" + Math.random().toString(36).slice(2, 6),
-              name: ing,
-              category: "🥫 Τρόφιμα",
-              price: best ? best.price : 0,
-              store: best ? best.store : "",
-              photo: "",
-              bought: false
-            });
-            addedCount++;
-          }
+        if (alreadyInList) return;
+        if (onlyMissing && alreadyInPantry) {
+          skippedCount++;
+          return;
+        }
+
+        const catMatch = findCheapestInCatalog(cleanCore || ing);
+        state.list.unshift({
+          id: "i_" + Date.now() +" + i + ""_" + Math.random().toString(36).slice(2, 4),
+          name: ing,
+          category: "🥫 Τρόφιμα",
+          emoji: "🍽️",
+          price: catMatch ? catMatch.price : 0,
+          store: catMatch ? catMatch.market : "",
+          photo: "",
+          bought: false
         });
+        addedCount++;
       });
 
       saveState();
-      showToast(
-        `🛒 Προστέθηκαν ${addedCount} υλικά στη λίστα (${skippedInPantry} υπήρχαν ήδη στο ντουλάπι)!`
-      );
+      if (addedCount > 0) {
+        showToast(
+          skippedCount > 0
+            ? Προστέθηκαν ${addedCount} υλικά στη λίστα (${skippedCount} υπήρχαν ήδη στο ντουλάπι)
+            : Προστέθηκαν ${addedCount} υλικά στη λίστα
+        );
+      } else {
+        showToast("Όλα τα υλικά που χρειάζεσαι υπάρχουν ήδη στο ντουλάπι ή στη λίστα!");
+      }
+    }
+
+    document.getElementById("weekToListBtn").addEventListener("click", () => {
+      const mealIds = state.weeklyPlan.flatMap((d) => [d.lunchId, d.dinnerId]);
+      const allIngredients = [];
+      mealIds.forEach((id) => {
+        const rec = state.recipes.find((r) => r.id === id);
+        if (rec && Array.isArray(rec.ingredients)) {
+          allIngredients.push(...rec.ingredients);
+        }
+      });
+      addIngredientsToList(allIngredients, true);
     });
 
-    // =========================================================
-    // 5. ΣΥΝΤΑΓΕΣ
-    // =========================================================
-    document.getElementById("toggleNewRecipeFormBtn").addEventListener("click", () => {
+    document.getElementById("toggleNewRecipeBtn").addEventListener("click", () => {
       document.getElementById("recipeForm").classList.toggle("hidden");
     });
 
-    document.getElementById("recipeSearch").addEventListener("input", renderRecipes);
-    document.getElementById("recipeCategoryFilter").addEventListener("change", renderRecipes);
+    document.getElementById("cancelRecipeBtn").addEventListener("click", () => {
+      document.getElementById("recipeForm").classList.add("hidden");
+    });
 
     document.getElementById("recipeForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("recipeTitle").value.trim();
       const category = document.getElementById("recipeCategory").value;
-      const meta = document.getElementById("recipeMeta").value.trim() || "30' • 4 μερίδες";
-      const ingredients = document
-        .getElementById("recipeIngredients")
-        .value.split("\n")
-        .map((s) => s.trim())
-        .filter(Boolean);
-      const steps = document
-        .getElementById("recipeSteps")
-        .value.split("\n")
-        .map((s) => s.trim())
-        .filter(Boolean);
+      const time = document.getElementById("recipeTime").value.trim() || "30' • 4 μερίδες";
+      const ingredients = document.getElementById("recipeIngredients").value
+        .split("\n").map((s) => s.trim()).filter(Boolean);
+      const steps = document.getElementById("recipeSteps").value
+        .split("\n").map((s) => s.trim()).filter(Boolean);
 
-      if (!title || !ingredients.length) return;
+      if (!title || !ingredients.length || !steps.length) return;
+
+      const catIcons = {
+        "Όσπρια": { emoji: "🫘", bg: "#f7ebd9" },
+        "Κρεατικά": { emoji: "🍖", bg: "#f5dcd4" },
+        "Ζυμαρικά": { emoji: "🍝", bg: "#fce0d8" },
+        "Ψάρια": { emoji: "🐟", bg: "#dceef8" },
+        "Λαδερά": { emoji: "🥗", bg: "#e4f2e7" },
+        "Ελαφριά": { emoji: "🍳", bg: "#fef0c7" }
+      };
+      const styleMeta = catIcons[category] || { emoji: "🍽️", bg: "#f2e4d8" };
 
       state.recipes.unshift({
-        id: "rec_custom_" + Date.now(),
+        id: "r_" + Date.now(),
         title,
         category,
-        time: meta,
-        servings: "",
+        emoji: styleMeta.emoji,
+        bg: styleMeta.bg,
+        time,
         ingredients,
-        steps: steps.length ? steps : ["Ετοιμάζουμε τα υλικά και μαγειρεύουμε σύμφωνα με τις προτιμήσεις μας."]
+        steps,
+        isCustom: true
       });
+
       e.target.reset();
       document.getElementById("recipeForm").classList.add("hidden");
       saveState();
-      showToast("Η συνταγή αποθηκεύτηκε!");
+      showToast(Αποθηκεύτηκε η συνταγή «${title}»);
     });
 
-    window.openRecipeDetail = function (recipeId) {
-      const r = state.recipes.find((rec) => rec.id === recipeId);
-      if (!r) return;
+    function deleteCustomRecipe(id) {
+      state.recipes = state.recipes.filter((r) => !(r.id === id && r.isCustom));
+      saveState();
+      showToast("Η συνταγή διαγράφηκε");
+    }
 
-      document.getElementById("modalRecipeBadge").textContent = r.category;
-      document.getElementById("modalRecipeTitle").textContent = r.title;
-      document.getElementById("modalRecipeMeta").textContent = [r.time, r.servings].filter(Boolean).join(" • ");
+    function openRecipeModal(recipeId) {
+      const recipe = state.recipes.find((r) => r.id === recipeId);
+      if (!recipe) return;
+      activeModalRecipeId = recipe.id;
 
-      const ul = document.getElementById("modalRecipeIngredients");
-      ul.innerHTML = r.ingredients.map((ing) => {
-        const pantryMatch = findInPantry(ing);
+      document.getElementById("modalRecipeArt").innerHTML = renderRecipeArtwork(recipe, "w-14 h-14 text-2xl rounded-2xl");
+      document.getElementById("modalRecipeBadge").textContent = recipe.category;
+      document.getElementById("modalRecipeTitle").textContent = recipe.title;
+      document.getElementById("modalRecipeMeta").textContent = ${recipe.time || "Σπιτική συνταγή"} • ${recipe.ingredients.length} υλικά;
+
+      const ingList = document.getElementById("modalRecipeIngredients");
+      ingList.innerHTML = recipe.ingredients.map((ing) => {
+        const core = extractIngredientSearchTerm(ing);
+        const pantryHit = findPantryMatch(core || ing);
         return `
-          <li class="flex items-center justify-between gap-2 ${pantryMatch ? "text-sage font-medium" : "text-coffee-ink"}">
-            <span>• ${escapeHtml(ing)}</span>
-            ${pantryMatch
-              ? `<span class="text-[11px] px-2 py-0.5 rounded-full bg-sage-soft text-sage font-semibold">✓ Υπάρχει στο ντουλάπι</span>`
-              : `<span class="text-[11px] text-coffee-muted">Λείπει</span>`}
+          <li class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-cream border border-coffee-border">
+            <span>${escapeHtml(ing)}</span>
+            ${pantryHit
+              ? <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-sage-soft text-sage shrink-0">✓ Στο ντουλάπι (${escapeHtml(pantryHit.qty || "υπάρχει")})</span>
+              : <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-coffee-soft text-coffee shrink-0">Για ψώνια</span>
+            }
           </li>
         `;
       }).join("");
 
-      const stepsList = Array.isArray(r.steps) ? r.steps : String(r.steps || "").split("\n").filter(Boolean);
-      const ol = document.getElementById("modalRecipeSteps");
-      ol.innerHTML = stepsList.map((st) => `<li class="pl-1">${escapeHtml(st)}</li>`).join("");
+      const stepsList = document.getElementById("modalRecipeSteps");
+      stepsList.innerHTML = (recipe.steps || []).map((st) => `
+        <li class="p-2.5 rounded-xl bg-cream/70 border border-coffee-border/80">${escapeHtml(st)}</li>
+      `).join("");
 
-      const addBtn = document.getElementById("modalAddRecipeToListBtn");
-      addBtn.onclick = () => {
-        window.addRecipeToList(r.id);
-        closeModal("recipeDetailModal");
-      };
+      document.getElementById("recipeModal").classList.remove("hidden");
+    }
 
-      document.getElementById("recipeDetailModal").classList.remove("hidden");
-    };
+    document.getElementById("closeRecipeModal").addEventListener("click", () => {
+      document.getElementById("recipeModal").classList.add("hidden");
+    });
 
-    window.addRecipeToList = function (recipeId) {
-      const recipe = state.recipes.find((r) => r.id === recipeId);
-      if (!recipe) return;
-      let added = 0;
+    document.getElementById("recipeModal").addEventListener("click", (e) => {
+      if (e.target.id === "recipeModal") e.target.classList.add("hidden");
+    });
 
-      recipe.ingredients.forEach((ing, idx) => {
-        if (!findInPantry(ing)) {
-          const best = findCheapestInCatalog(ing);
-          state.list.unshift({
-            id: "i_" + Date.now() + "_" + idx,
-            name: ing,
-            category: "🥫 Τρόφιμα",
-            price: best ? best.price : 0,
-            store: best ? best.store : "",
-            photo: "",
-            bought: false
-          });
-          added++;
+    document.getElementById("modalAddMissingBtn").addEventListener("click", () => {
+      const recipe = state.recipes.find((r) => r.id === activeModalRecipeId);
+      if (recipe) addIngredientsToList(recipe.ingredients, true);
+    });
+
+    document.getElementById("modalAddAllBtn").addEventListener("click", () => {
+      const recipe = state.recipes.find((r) => r.id === activeModalRecipeId);
+      if (recipe) addIngredientsToList(recipe.ingredients, false);
+    });
+
+    document.getElementById("openInstallBtn").addEventListener("click", () => {
+      document.getElementById("installModal").classList.remove("hidden");
+    });
+    document.getElementById("closeInstallModal").addEventListener("click", () => {
+      document.getElementById("installModal").classList.add("hidden");
+    });
+    document.getElementById("installModal").addEventListener("click", (e) => {
+      if (e.target.id === "installModal") e.target.classList.add("hidden");
+    });
+
+    document.getElementById("openBackupBtn").addEventListener("click", () => {
+      document.getElementById("backupModal").classList.remove("hidden");
+    });
+    document.getElementById("closeBackupModal").addEventListener("click", () => {
+      document.getElementById("backupModal").classList.add("hidden");
+    });
+    document.getElementById("backupModal").addEventListener("click", (e) => {
+      if (e.target.id === "backupModal") e.target.classList.add("hidden");
+    });
+
+    document.getElementById("exportJsonBtn").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "lista-psonia-menu-recipes-backup.json";
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("Κατέβηκε το αντίγραφο ασφαλείας");
+    });
+
+    document.getElementById("importJsonInput").addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const imported = JSON.parse(String(reader.result));
+          if (imported && typeof imported === "object") {
+            state = { ...defaultState(), ...imported };
+            saveState();
+            document.getElementById("backupModal").classList.add("hidden");
+            showToast("Επαναφέρθηκαν τα δεδομένα σου!");
+          }
+        } catch (err) {
+          showToast("Μη έγκυρο αρχείο JSON");
         }
-      });
+      };
+      reader.readAsText(file);
+    });
 
+    document.getElementById("resetDemoBtn").addEventListener("click", () => {
+      state = defaultState();
       saveState();
-      showToast(
-        added > 0
-          ? `Προστέθηκαν ${added} υλικά που έλειπαν στη λίστα!`
-          : "Έχεις ήδη όλα τα υλικά στο ντουλάπι!"
-      );
-    };
+      document.getElementById("backupModal").classList.add("hidden");
+      showToast("Επαναφέρθηκαν τα αρχικά δεδομένα");
+    });
 
-    window.deleteRecipe = function (id) {
-      state.recipes = state.recipes.filter((r) => r.id !== id);
-      saveState();
-      showToast("Η συνταγή διαγράφηκε");
-    };
-
-    // =========================================================
-    // RENDER FUNCTIONS
-    // =========================================================
     function renderStats() {
-      const totalItems = state.list.length;
-      const boughtItems = state.list.filter((i) => i.bought).length;
-      const sumCost = state.list.reduce((acc, i) => acc + (Number(i.price) || 0), 0);
+      const total = state.list.length;
+      const bought = state.list.filter((i) => i.bought).length;
+      const sum = state.list.reduce((acc, i) => acc + (Number(i.price) || 0), 0);
 
-      document.getElementById("statProgress").textContent = `${boughtItems} / ${totalItems}`;
-      document.getElementById("statTotal").textContent = formatEur(sumCost);
-      document.getElementById("statPantry").textContent = `${state.pantry.length} είδη`;
-      document.getElementById("statRecipes").textContent = `${state.recipes.length} έτοιμες`;
-
-      const completionEl = document.getElementById("completionBanner");
-      if (totalItems > 0 && boughtItems === totalItems) {
-        completionEl.classList.remove("hidden");
-      } else {
-        completionEl.classList.add("hidden");
-      }
+      document.getElementById("statProgress").textContent = ${bought} / ${total};
+      document.getElementById("statTotal").textContent = formatEur(sum);
+      document.getElementById("statPantry").textContent = ${state.pantry.length} είδη;
+      document.getElementById("statRecipes").textContent = ${state.recipes.length} συνταγές;
 
       const budgetEl = document.getElementById("budgetStatus");
       if (state.budget) {
-        const diff = state.budget - sumCost;
-        if (diff >= 0) {
-          budgetEl.className = "text-xs font-semibold mt-2 text-sage";
-          budgetEl.textContent = `Όριο αγορών: ${formatEur(state.budget)} • Υπόλοιπο: ${formatEur(diff)}`;
-        } else {
-          budgetEl.className = "text-xs font-semibold mt-2 text-red-500";
-          budgetEl.textContent = `Όριο αγορών: ${formatEur(state.budget)} • Υπέρβαση κατά ${formatEur(Math.abs(diff))}!`;
-        }
+        const diff = state.budget - sum;
+        budgetEl.textContent = diff >= 0
+          ? Όριο: ${formatEur(state.budget)} • Υπόλοιπο: ${formatEur(diff)}
+          : Όριο: ${formatEur(state.budget)} • Υπέρβαση κατά: ${formatEur(Math.abs(diff))};
+        budgetEl.className = diff >= 0 ? "text-xs font-semibold mt-2 text-sage" : "text-xs font-semibold mt-2 text-coffee";
       } else {
         budgetEl.textContent = "";
+      }
+
+      const banner = document.getElementById("completionBanner");
+      if (total > 0 && bought === total) {
+        banner.classList.remove("hidden");
+      } else {
+        banner.classList.add("hidden");
       }
     }
 
@@ -1889,39 +1667,38 @@
 
       if (!items.length) {
         container.innerHTML = `
-          <div class="text-center py-8 px-4 text-coffee-muted text-sm bg-cream rounded-xl border border-dashed border-coffee-border">
-            Το καλάθι σου είναι άδειο. Πρόσθεσε το πρώτο προϊόν ή στείλε υλικά από το <strong>📅 Εβδομαδιαίο Μενού</strong> ή τις <strong>📖 Συνταγές</strong>!
-          </div>`;
+          <div class="text-center py-8 px-4 rounded-2xl bg-cream/60 border border-dashed border-coffee-border text-coffee-muted text-sm">
+            🧺 Το καλάθι σου είναι άδειο. Πρόσθεσε προϊόντα από πάνω ή φέρε υλικά από το Εβδομαδιαίο Μενού!
+          </div>
+        `;
         return;
       }
 
       container.innerHTML = items.map((item) => `
-        <div class="flex items-center justify-between gap-3 p-3 rounded-xl border border-coffee-border transition ${item.bought ? "bg-cream opacity-65" : "bg-surface"}">
-          <div class="flex items-center gap-2.5 min-w-0">
-            <input type="checkbox" ${item.bought ? "checked" : ""} onchange="toggleBought('${item.id}', false)"
-              class="w-4 h-4 accent-coffee rounded cursor-pointer shrink-0" />
-            ${item.photo ? `<img src="${item.photo}" alt="${escapeHtml(item.name)}" class="w-11 h-11 rounded-lg object-cover border border-coffee-border shrink-0" />` : ""}
+        <div class="flex items-center justify-between gap-3 p-3 rounded-2xl border border-coffee-border bg-cream/45 transition ${item.bought ? "opacity-60" : ""}">
+          <div class="flex items-center gap-3 min-w-0">
+            <input type="checkbox" ${item.bought ? "checked" : ""} onchange="toggleBoughtItem('${item.id}', false)"
+              class="w-4 h-4 accent-[#7c4a2d] rounded cursor-pointer shrink-0" />
+            ${renderProductThumb(item.emoji || item.category.split(" ")[0], item.photo, item.name)}
             <div class="min-w-0">
-              <div class="font-semibold text-sm truncate ${item.bought ? "line-through text-coffee-muted" : "text-coffee-ink"}">
+              <div class="font-semibold text-sm truncate ${item.bought ? "line-through text-coffee-muted" : ""}">
                 ${escapeHtml(item.name)}
               </div>
-              <div class="flex flex-wrap items-center gap-1.5 mt-1 text-xs text-coffee-muted">
-                <span class="px-2 py-0.5 rounded-full bg-coffee-soft text-coffee font-medium text-[11px]">
-                  ${escapeHtml(item.category)}
-                </span>
-                ${item.price ? `<span class="font-semibold text-coffee-ink">${formatEur(item.price)}</span>` : ""}
-                ${item.store ? `<span>• ${escapeHtml(item.store)}</span>` : ""}
+              <div class="flex flex-wrap items-center gap-1.5 mt-0.5 text-[11px] text-coffee-muted">
+                <span class="px-2 py-0.5 rounded-full bg-coffee-soft text-coffee font-medium">${escapeHtml(item.category)}</span>
+                ${item.price ? <span class="font-semibold text-coffee-ink">${formatEur(item.price)}</span> : ""}
+                ${item.store ? <span>• ${escapeHtml(item.store)}</span> : ""}
               </div>
             </div>
           </div>
 
           <div class="flex items-center gap-1.5 shrink-0">
-            <button type="button" onclick="toggleBought('${item.id}', true)" title="Αγοράστηκε & μεταφορά στο ντουλάπι"
-              class="px-2.5 py-1.5 rounded-lg bg-sage-soft hover:opacity-90 text-sage font-semibold text-xs transition">
-              🏠 Στο ντουλάπι
+            <button type="button" onclick="toggleBoughtItem('${item.id}', true)" title="Αγοράστηκε &amp; αποθήκευση στο ντουλάπι"
+              class="px-2.5 py-1.5 rounded-xl bg-sage-soft text-sage text-xs font-semibold hover:opacity-90 transition">
+              🏠 Ντουλάπι
             </button>
-            <button type="button" onclick="deleteListItem('${item.id}')" title="Διαγραφή"
-              class="px-2.5 py-1.5 rounded-lg border border-coffee-border bg-surface hover:bg-cream text-coffee-muted font-semibold text-xs transition">
+            <button type="button" onclick="deleteListItem('${item.id}')" title="Αφαίρεση"
+              class="px-2.5 py-1.5 rounded-xl border border-coffee-border bg-surface text-xs font-semibold hover:bg-coffee-soft transition">
               ✕
             </button>
           </div>
@@ -1932,70 +1709,71 @@
     function renderCatalog() {
       const q = document.getElementById("catalogSearch").value.trim().toLowerCase();
       const cat = document.getElementById("catalogCategoryFilter").value;
-      const sortMode = document.getElementById("catalogSort").value;
+      const sort = document.getElementById("catalogSort").value;
       const container = document.getElementById("catalogContainer");
 
-      let filtered = state.catalog.filter((c) => {
-        const matchText =
-          !q ||
+      let list = state.catalog.filter((c) => {
+        const matchCat = cat === "ALL" || c.category === cat;
+        const matchQuery = !q ||
           c.name.toLowerCase().includes(q) ||
           Object.keys(c.prices || {}).some((m) => m.toLowerCase().includes(q));
-        const matchCat = cat === "ALL" || c.category === cat;
-        return matchText && matchCat;
+        return matchCat && matchQuery;
       });
 
-      const getMinPrice = (item) => {
-        const vals = Object.values(item.prices || {});
-        return vals.length ? Math.min(...vals) : Infinity;
-      };
-      const getSpread = (item) => {
-        const vals = Object.values(item.prices || {});
-        return vals.length > 1 ? Math.max(...vals) - Math.min(...vals) : 0;
+      const getStats = (prod) => {
+        const vals = Object.values(prod.prices || {}).map(Number).filter(👎 => !isNaN(n));
+        if (!vals.length) return { min: Infinity, spread: 0 };
+        const min = Math.min(...vals);
+        const max = Math.max(...vals);
+        return { min, spread: max - min };
       };
 
-      if (sortMode === "cheapest") {
-        filtered = [...filtered].sort((a, b) => getMinPrice(a) - getMinPrice(b));
-      } else if (sortMode === "savings") {
-        filtered = [...filtered].sort((a, b) => getSpread(b) - getSpread(a));
+      if (sort === "cheapest") {
+        list = [...list].sort((a, b) => getStats(a).min - getStats(b).min);
+      } else if (sort === "savings") {
+        list = [...list].sort((a, b) => getStats(b).spread - getStats(a).spread);
       }
 
-      document.getElementById("catalogCountLabel").textContent = `${filtered.length} προϊόντα`;
+      document.getElementById("catalogCountLabel").textContent = ${list.length} προϊόντα;
 
-      if (!filtered.length) {
-        container.innerHTML = `<div class="text-center py-6 text-sm text-coffee-muted">Δεν βρέθηκαν προϊόντα με αυτά τα κριτήρια.</div>`;
+      if (!list.length) {
+        container.innerHTML = <div class="text-center py-8 text-sm text-coffee-muted">Δεν βρέθηκαν προϊόντα με αυτά τα κριτήρια.</div>;
         return;
       }
 
-      container.innerHTML = filtered.map((prod) => {
-        const sorted = Object.entries(prod.prices || {}).sort((a, b) => a[1] - b[1]);
-        const minVal = sorted[0]?.[1];
-        const maxVal = sorted[sorted.length - 1]?.[1];
-        const diff = sorted.length > 1 ? maxVal - minVal : 0;
+      container.innerHTML = list.map((prod) => {
+        const sortedPrices = Object.entries(prod.prices || {}).sort((a, b) => a[1] - b[1]);
+        const cheapestMarket = sortedPrices[0]?.[0];
+        const cheapestVal = sortedPrices[0]?.[1];
 
-        const pills = sorted.map(([market, val], index) => `
-          <span class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg mr-1.5 mt-1.5 ${
-            index === 0
-              ? "bg-sage-soft text-sage font-bold border border-coffee-border"
-              : "bg-cream text-coffee-ink border border-coffee-border"
+        const pills = sortedPrices.map(([market, val], idx) => `
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs border ${
+            idx === 0
+              ? "bg-sage-soft text-sage border-coffee-border font-bold"
+              : "bg-cream text-coffee-ink border-coffee-border/80"
           }">
-            ${escapeHtml(market)}: ${formatEur(val)} ${index === 0 ? "★ Φθηνότερο" : ""}
+            ${idx === 0 ? "★" : "•"} ${escapeHtml(market)}: <strong>${formatEur(val)}</strong>
           </span>
         `).join("");
 
         return `
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl border border-coffee-border bg-surface">
-            <div>
-              <div class="flex flex-wrap items-center gap-1.5">
-                <strong class="text-sm text-coffee-ink">${escapeHtml(prod.name)}</strong>
-                <span class="px-2 py-0.5 rounded-full bg-coffee-soft text-coffee font-medium text-[11px]">
-                  ${escapeHtml(prod.category)}
-                </span>
-                ${diff >= 0.05 ? `<span class="text-[11px] font-semibold text-coffee">Διαφορά έως ${formatEur(diff)}</span>` : ""}
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl border border-coffee-border bg-cream/40">
+            <div class="flex items-start gap-3">
+              ${renderProductThumb(prod.emoji || prod.category.split(" ")[0], "", prod.name)}
+              <div class="space-y-1.5">
+                <div class="flex flex-wrap items-center gap-2">
+                  <strong class="text-sm">${escapeHtml(prod.name)}</strong>
+                  <span class="text-[11px] px-2 py-0.5 rounded-full bg-coffee-soft text-coffee font-medium">${escapeHtml(prod.category)}</span>
+                  ${cheapestMarket ? <span class="text-[11px] font-semibold text-sage">Φθηνότερα: ${escapeHtml(cheapestMarket)} (${formatEur(cheapestVal)})</span> : ""}
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  ${pills || `<span class="text-xs text-coffee-muted">Δεν έχουν καταχωρηθεί τιμές ακόμη</span>`}
+                </div>
               </div>
-              <div class="mt-0.5">${pills || `<span class="text-xs text-coffee-muted">Χωρίς καταχωρημένες τιμές</span>`}</div>
             </div>
-            <button type="button" onclick="addCatalogToList('${prod.id}')"
-              class="self-start sm:self-center shrink-0 px-3.5 py-2 rounded-xl bg-coffee-soft hover:bg-coffee hover:text-white text-coffee font-semibold text-xs transition">
+
+            <button type="button" onclick="addCatalogItemToList('${prod.id}')"
+              class="px-3.5 py-2 rounded-xl bg-coffee hover:bg-coffee-dark text-white text-xs font-semibold transition shrink-0 self-end sm:self-center">
               ＋ Στη λίστα
             </button>
           </div>
@@ -2004,99 +1782,85 @@
     }
 
     function renderPantry() {
-      const q = document.getElementById("pantrySearch").value.trim().toLowerCase();
       const container = document.getElementById("pantryContainer");
+      const items = pantryFilter === "ALL"
+        ? state.pantry
+        : state.pantry.filter((p) => p.status === pantryFilter);
 
-      const filtered = state.pantry.filter(
-        (p) => !q || p.name.toLowerCase().includes(q) || (p.note && p.note.toLowerCase().includes(q))
-      );
-
-      if (!filtered.length) {
-        container.innerHTML = `<div class="text-center py-6 text-sm text-coffee-muted">Το ντουλάπι είναι άδειο (ή δεν βρέθηκε το είδος).</div>`;
+      if (!items.length) {
+        container.innerHTML = <div class="text-center py-8 text-sm text-coffee-muted rounded-2xl bg-cream/60 border border-dashed border-coffee-border">Δεν υπάρχουν είδη σε αυτή την προβολή του ντουλαπιού.</div>;
         return;
       }
 
-      const statusBadge = {
-        ok: `<span class="px-2 py-0.5 rounded-full bg-sage-soft text-sage font-semibold text-[11px]">🟢 Επαρκές</span>`,
-        low: `<span class="px-2 py-0.5 rounded-full bg-coffee-soft text-coffee font-semibold text-[11px]">🟡 Λίγο</span>`,
-        expiring: `<span class="px-2 py-0.5 rounded-full bg-coffee-soft text-coffee font-semibold text-[11px]">🟠 Λήγει σύντομα</span>`
+      const statusBadge = (st) => {
+        if (st === "low") return <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-coffee-soft text-coffee">⚠️ Λίγο</span>;
+        if (st === "expiring") return <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-coffee-soft text-coffee">⏳ Λήγει σύντομα</span>;
+        return <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-sage-soft text-sage">✅ Επαρκές</span>;
       };
 
-      container.innerHTML = filtered.map((p) => `
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl border border-coffee-border bg-surface">
+      container.innerHTML = items.map((p) => `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-2xl border border-coffee-border bg-cream/45">
           <div>
             <div class="flex flex-wrap items-center gap-2">
-              <strong class="text-sm text-coffee-ink">${escapeHtml(p.name)}</strong>
-              ${statusBadge[p.status] || statusBadge.ok}
+              <strong class="text-sm">${escapeHtml(p.name)}</strong>
+              <span class="text-xs text-coffee-muted">• ${escapeHtml(p.qty || "1 τεμ.")}</span>
+              ${statusBadge(p.status || "ok")}
             </div>
-            <div class="text-xs text-coffee-muted mt-1">
-              Απόθεμα: <span class="font-semibold text-coffee-ink">${p.count} ${escapeHtml(p.unit)}</span>
-              ${p.note ? ` • ${escapeHtml(p.note)}` : ""}
-            </div>
+            ${p.note ? <p class="text-xs text-coffee-muted mt-0.5">${escapeHtml(p.note)}</p> : ""}
           </div>
 
-          <div class="flex items-center gap-1.5 self-start sm:self-center">
-            <button type="button" onclick="adjustPantryCount('${p.id}', -1)" class="w-8 h-8 rounded-lg border border-coffee-border bg-cream hover:bg-coffee-soft font-bold text-sm">−</button>
-            <button type="button" onclick="adjustPantryCount('${p.id}', 1)" class="w-8 h-8 rounded-lg border border-coffee-border bg-cream hover:bg-coffee-soft font-bold text-sm">+</button>
-            <button type="button" onclick="finishPantryItem('${p.id}')"
-              class="ml-1 px-3 py-2 rounded-xl bg-coffee-soft hover:bg-coffee hover:text-white text-coffee font-semibold text-xs transition">
+          <div class="flex items-center gap-1.5 self-end sm:self-center">
+            <button type="button" onclick="cyclePantryStatus('${p.id}')"
+              class="px-2.5 py-1.5 rounded-xl border border-coffee-border bg-surface text-xs font-semibold hover:bg-coffee-soft transition">
+              Κατάσταση
+            </button>
+            <button type="button" onclick="movePantryItemToList('${p.id}')"
+              class="px-3 py-1.5 rounded-xl bg-coffee hover:bg-coffee-dark text-white text-xs font-semibold transition">
               Τελείωσε → Στη λίστα
+            </button>
+            <button type="button" onclick="deletePantryItem('${p.id}')"
+              class="px-2.5 py-1.5 rounded-xl border border-coffee-border bg-surface text-xs font-semibold hover:bg-coffee-soft transition">
+              ✕
             </button>
           </div>
         </div>
       `).join("");
     }
 
-    function renderWeeklyPlan() {
-      const container = document.getElementById("weeklyPlanContainer");
-      const optionsHtml = (selectedId) =>
-        state.recipes
-          .map(
-            (r) =>
-              `<option value="${r.id}" ${r.id === selectedId ? "selected" : ""}>${escapeHtml(r.title)} (${escapeHtml(r.category)})</option>`
-          )
-          .join("");
+    function renderWeekly() {
+      const container = document.getElementById("weeklyContainer");
+      const getRecipe = (id) => state.recipes.find((r) => r.id === id) || state.recipes[0];
 
-      container.innerHTML = state.weeklyPlan.map((slot, idx) => {
-        const lunchRec = state.recipes.find((r) => r.id === slot.lunchId);
-        const dinnerRec = state.recipes.find((r) => r.id === slot.dinnerId);
+      container.innerHTML = state.weeklyPlan.map((entry) => {
+        const lunch = getRecipe(entry.lunchId);
+        const dinner = getRecipe(entry.dinnerId);
 
         return `
-          <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm space-y-3">
+          <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm space-y-2.5">
             <div class="flex items-center justify-between border-b border-coffee-border/70 pb-2">
-              <strong class="text-sm sm:text-base font-bold text-coffee">${escapeHtml(slot.day)}</strong>
-              <span class="text-[11px] text-coffee-muted">Ημέρα ${idx + 1}η</span>
+              <h3 class="text-sm font-bold text-coffee">${escapeHtml(entry.day)}</h3>
+              <span class="text-[11px] text-coffee-muted">2 γεύματα</span>
             </div>
 
-            <!-- Μεσημεριανό -->
-            <div class="space-y-1.5">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-coffee-muted">☀️ Μεσημεριανό</span>
-                <div class="flex items-center gap-1.5">
-                  ${lunchRec ? `<button type="button" onclick="openRecipeDetail('${lunchRec.id}')" class="text-[11px] font-semibold text-coffee hover:underline">📖 Συνταγή</button>` : ""}
-                  <button type="button" onclick="rerollSingleMeal(${idx}, 'lunch')" title="Άλλο γεύμα" class="px-1.5 py-0.5 rounded bg-cream hover:bg-coffee-soft text-xs">🔄</button>
-                </div>
+            <button type="button" onclick="openRecipeModal('${lunch.id}')"
+              class="w-full text-left flex items-center gap-3 p-2.5 rounded-xl bg-cream/70 hover:bg-coffee-soft/60 border border-coffee-border/70 transition">
+              ${renderRecipeArtwork(lunch, "w-11 h-11 text-xl rounded-xl shrink-0")}
+              <div class="min-w-0 flex-1">
+                <span class="block text-[10px] font-semibold uppercase tracking-wide text-coffee-muted">☀️ Μεσημεριανό</span>
+                <strong class="block text-xs sm:text-sm truncate">${escapeHtml(lunch.title)}</strong>
               </div>
-              <select onchange="changeDayMeal(${idx}, 'lunch', this.value)"
-                class="w-full px-2.5 py-2 text-xs sm:text-sm rounded-xl border border-coffee-border bg-cream focus:outline-none focus:ring-2 focus:ring-coffee/30">
-                ${optionsHtml(slot.lunchId)}
-              </select>
-            </div>
+              <span class="text-[11px] font-semibold text-coffee shrink-0">Συνταγή →</span>
+            </button>
 
-            <!-- Βραδινό -->
-            <div class="space-y-1.5">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-coffee-muted">🌙 Βραδινό</span>
-                <div class="flex items-center gap-1.5">
-                  ${dinnerRec ? `<button type="button" onclick="openRecipeDetail('${dinnerRec.id}')" class="text-[11px] font-semibold text-coffee hover:underline">📖 Συνταγή</button>` : ""}
-                  <button type="button" onclick="rerollSingleMeal(${idx}, 'dinner')" title="Άλλο γεύμα" class="px-1.5 py-0.5 rounded bg-cream hover:bg-coffee-soft text-xs">🔄</button>
-                </div>
+            <button type="button" onclick="openRecipeModal('${dinner.id}')"
+              class="w-full text-left flex items-center gap-3 p-2.5 rounded-xl bg-cream/70 hover:bg-coffee-soft/60 border border-coffee-border/70 transition">
+              ${renderRecipeArtwork(dinner, "w-11 h-11 text-xl rounded-xl shrink-0")}
+              <div class="min-w-0 flex-1">
+                <span class="block text-[10px] font-semibold uppercase tracking-wide text-coffee-muted">🌙 Βραδινό</span>
+                <strong class="block text-xs sm:text-sm truncate">${escapeHtml(dinner.title)}</strong>
               </div>
-              <select onchange="changeDayMeal(${idx}, 'dinner', this.value)"
-                class="w-full px-2.5 py-2 text-xs sm:text-sm rounded-xl border border-coffee-border bg-cream focus:outline-none focus:ring-2 focus:ring-coffee/30">
-                ${optionsHtml(slot.dinnerId)}
-              </select>
-            </div>
+              <span class="text-[11px] font-semibold text-coffee shrink-0">Συνταγή →</span>
+            </button>
           </div>
         `;
       }).join("");
@@ -2109,75 +1873,75 @@
 
       const filtered = state.recipes.filter((r) => {
         const matchCat = cat === "ALL" || r.category === cat;
-        const matchText =
-          !q ||
+        const matchQuery = !q ||
           r.title.toLowerCase().includes(q) ||
-          r.ingredients.some((i) => i.toLowerCase().includes(q));
-        return matchCat && matchText;
+          (r.ingredients || []).some((ing) => ing.toLowerCase().includes(q));
+        return matchCat && matchQuery;
       });
 
       if (!filtered.length) {
-        container.innerHTML = `<div class="col-span-full text-center py-8 text-sm text-coffee-muted bg-surface rounded-2xl border border-coffee-border">Δεν βρέθηκαν συνταγές με αυτά τα φίλτρα.</div>`;
+        container.innerHTML = <div class="col-span-full text-center py-8 text-sm text-coffee-muted bg-surface border border-coffee-border rounded-2xl">Δεν βρέθηκαν συνταγές.</div>;
         return;
       }
 
-      container.innerHTML = filtered.map((r) => {
-        const pantryMatches = r.ingredients.filter((ing) => Boolean(findInPantry(ing))).length;
-        return `
-          <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm flex flex-col justify-between gap-3">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-1">
-                <span class="px-2.5 py-0.5 rounded-full bg-coffee-soft text-coffee font-semibold text-[11px]">
-                  ${escapeHtml(r.category)}
-                </span>
-                <span class="text-[11px] text-coffee-muted">${escapeHtml([r.time, r.servings].filter(Boolean).join(" • "))}</span>
+      container.innerHTML = filtered.map((r) => `
+        <div class="bg-surface border border-coffee-border rounded-2xl p-4 shadow-sm flex flex-col justify-between gap-3">
+          <div class="flex items-start gap-3">
+            ${renderRecipeArtwork(r, "w-14 h-14 text-2xl rounded-2xl shrink-0")}
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-coffee-soft text-coffee">${escapeHtml(r.category)}</span>
+                <span class="text-[11px] text-coffee-muted">${escapeHtml(r.time || "")}</span>
               </div>
-
-              <h3 class="text-sm sm:text-base font-bold text-coffee-ink cursor-pointer hover:text-coffee transition" onclick="openRecipeDetail('${r.id}')">
-                ${escapeHtml(r.title)}
-              </h3>
-
-              <p class="text-xs text-coffee-muted mt-1.5 line-clamp-2">
-                <strong>Υλικά:</strong> ${r.ingredients.map(escapeHtml).join(", ")}
+              <h3 class="text-sm sm:text-base font-bold mt-1 leading-snug">${escapeHtml(r.title)}</h3>
+              <p class="text-xs text-coffee-muted line-clamp-2 mt-1">
+                Υλικά: ${escapeHtml((r.ingredients || []).join(", "))}
               </p>
-
-              ${pantryMatches > 0 ? `<p class="text-[11px] font-semibold text-sage mt-1.5">🏠 Έχεις ήδη ${pantryMatches}/${r.ingredients.length} υλικά στο ντουλάπι</p>` : ""}
-            </div>
-
-            <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-coffee-border/60">
-              <button type="button" onclick="openRecipeDetail('${r.id}')"
-                class="px-3 py-1.5 rounded-xl border border-coffee-border bg-cream hover:bg-coffee-soft text-coffee-ink font-semibold text-xs transition">
-                👩‍🍳 Δες συνταγή
-              </button>
-              <button type="button" onclick="addRecipeToList('${r.id}')"
-                class="px-3 py-1.5 rounded-xl bg-coffee hover:bg-coffee-dark text-white font-semibold text-xs transition">
-                ＋ Υλικά στη λίστα
-              </button>
-              ${r.id.startsWith("rec_custom_") ? `
-                <button type="button" onclick="deleteRecipe('${r.id}')" title="Διαγραφή"
-                  class="ml-auto px-2.5 py-1.5 rounded-xl border border-coffee-border bg-surface hover:bg-cream text-coffee-muted font-semibold text-xs transition">
-                  ✕
-                </button>` : ""}
             </div>
           </div>
-        `;
-      }).join("");
+
+          <div class="flex items-center justify-between gap-2 pt-2 border-t border-coffee-border/70">
+            <button type="button" onclick="openRecipeModal('${r.id}')"
+              class="px-3 py-1.5 rounded-xl bg-coffee hover:bg-coffee-dark text-white text-xs font-semibold transition">
+              📖 Δες συνταγή
+            </button>
+            <div class="flex items-center gap-1.5">
+              <button type="button" onclick='addIngredientsToList(${JSON.stringify(r.ingredients)}, true)'
+                class="px-2.5 py-1.5 rounded-xl bg-coffee-soft text-coffee text-xs font-semibold hover:opacity-90 transition">
+                ＋ Λείπουν στη λίστα
+              </button>
+              ${r.isCustom ? `
+                <button type="button" onclick="deleteCustomRecipe('${r.id}')"
+                  class="px-2 py-1.5 rounded-xl border border-coffee-border text-xs font-semibold hover:bg-coffee-soft transition">
+                  ✕
+                </button>
+              ` : ""}
+            </div>
+          </div>
+        </div>
+      `).join("");
     }
 
+    document.getElementById("recipeSearch").addEventListener("input", renderRecipes);
+    document.getElementById("recipeCategoryFilter").addEventListener("change", renderRecipes);
+
     function renderAll() {
-      applyThemeAndBackground();
+      applyTheme();
+      applyBasketBackgroundState();
       if (state.budget) {
         document.getElementById("budgetInput").value = state.budget;
       }
-      renderQuickAdd();
       renderStats();
+      renderQuickAdd();
       renderList();
       renderCatalog();
       renderPantry();
-      renderWeeklyPlan();
+      renderWeekly();
       renderRecipes();
     }
 
+    initBasketBackground();
+    initPwaManifest();
     renderAll();
   </script>
 </body>
